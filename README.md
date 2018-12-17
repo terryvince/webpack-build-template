@@ -9,7 +9,7 @@ npm start
 npm run build
 
 ## mainfest
---build
+--build\n
 --src
   --assert
   --sass
