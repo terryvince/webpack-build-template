@@ -1,14 +1,14 @@
 # webpack-build-template
 template of the front end，support vue，sass，eslint，babel，postcss，ejs，code splitting
 
-##install and start
+## install and start
 npm install
 npm start
 
-##build
+## build
 npm run build
 
-##mainfest
+## mainfest
 --build
 --src
   --assert
