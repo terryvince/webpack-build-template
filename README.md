@@ -14,9 +14,9 @@ npm run build
 <br/>
 --src
 <br/>
-  >>--assert
+  &nbsp;&nbsp;--assert
   <br/>
-  >>--sass
+  &nbsp;&nbsp;--sass
   <br/>
   --static
   <br/>
