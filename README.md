@@ -3,6 +3,7 @@ template of the front end，support vue，sass，eslint，babel，postcss，ejs�
 
 ## install and start
 npm install
+<br/>
 npm start
 
 ## build
@@ -12,13 +13,23 @@ npm run build
 --build
 <br/>
 --src
+<br/>
   --assert
+  <br/>
   --sass
+  <br/>
   --static
+  <br/>
   --template
+  <br/>
   --UIComponent
+  <br/>
   --utils
+  <br/>
   --index.html
+  <br/>
   --main.js
+  <br/>
   --main.scss
+<br/>
 ...config file
