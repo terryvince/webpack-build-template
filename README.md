@@ -18,18 +18,18 @@ npm run build
   <br/>
   &nbsp;&nbsp;--sass
   <br/>
-  --static
+  &nbsp;&nbsp;--static
   <br/>
-  --template
+  &nbsp;&nbsp;--template
   <br/>
-  --UIComponent
+  &nbsp;&nbsp;--UIComponent
   <br/>
-  --utils
+  &nbsp;&nbsp;--utils
   <br/>
-  --index.html
+  &nbsp;&nbsp;--index.html
   <br/>
-  --main.js
+  &nbsp;&nbsp;--main.js
   <br/>
-  --main.scss
+  &nbsp;&nbsp;--main.scss
 <br/>
 ...config file
