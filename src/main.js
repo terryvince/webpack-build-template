@@ -8,6 +8,6 @@ window.$ = $;
 window.jQuery = $;
 
 $(function () {
-    // 菜单
+    // title
     $('title').html('webpack-build-tool');
 });
