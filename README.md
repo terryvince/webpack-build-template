@@ -4,13 +4,13 @@ template of the front end，support vue，sass，eslint，babel，postcss，ejs�
 ## install and start
 ```command
 npm install
-<br/>
 npm start
 ```
 
 ## build
+```command
 npm run build
-
+```
 ## mainfest
 --build
 <br/>
