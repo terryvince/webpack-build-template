@@ -2,9 +2,11 @@
 template of the front end，support vue，sass，eslint，babel，postcss，ejs，code splitting
 
 ## install and start
+```command
 npm install
 <br/>
 npm start
+```
 
 ## build
 npm run build
