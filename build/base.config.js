@@ -8,7 +8,6 @@ const htmlInjectionPlugin = require('html-script-injection-webpack-plugin');
 let baseConfig = {
     root,
     src,
-    isEjsContext: true,
     dist: resolve(__dirname, '../dist'),
     app:'template of mutiple page',
     lang: 'zhCN',
@@ -62,7 +61,7 @@ let baseConfig = {
         baseConfig.plugins.push(htmlWebpack);
     });
     Object.assign(baseConfig.entry,entryOb);
-    baseConfig.plugins.push(new htmlInjectionPlugin({injectPoint:true}));
+    baseConfig.isProd && baseConfig.plugins.push(new htmlInjectionPlugin({injectPoint:true}));
 })();
 
 module.exports = baseConfig;
