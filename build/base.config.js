@@ -18,15 +18,97 @@ let baseConfig = {
         clientLogLevel: 'warning',
         contentBase: join(__dirname, '../.temp'),
         compress: true,
-        host: '192.168.1.159',
+        host: '0.0.0.0',
         port: 9000,
         progress: true,
+        hot: true,
+        // hotOnly:true,
+        // open:true,
+        historyApiFallback: true,
         stats: { colors: true, errors:true, errorDetails:true, modules:false, entrypoints:false }
     },
     title:{
         test:'template test'
     }
 };
+
+baseConfig.rules = [
+    {
+        test: /\.js$/,
+        include: /src/,
+        exclude: /node_modules|bower_components/,
+        use: [{
+            loader: 'babel-loader',
+            options: {
+                cacheDirectory: true
+            }
+        },
+        'eslint-loader'
+        ]
+    },
+    {
+        test: /\.(ejs|html)$/,
+        use: [
+            {
+                loader: 'html-loader',
+                options: {
+                    attrs: [':data-src', 'img:src'],
+                    minimize: false  //压缩html
+                }
+            },
+            {
+                loader: 'ejs-html-loader',
+                options: {
+                    context: baseConfig,
+                    season: 1,
+                    episode: 9,
+                    production: baseConfig.isProd
+                }
+            }
+        ]
+    },
+    {
+        test: /\.json$/,
+        loader: 'json-loader'
+    },
+    {
+        test: /\.xml$/,
+        use: [
+            'xml-loader'
+        ]
+    },
+    {
+        test: /\.(csv|tsv)$/,
+        use: [
+            'csv-loader'
+        ]
+    },
+    {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: {
+            loader: 'url-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath: 'static/font/',
+                publicPath: 'static/font/'
+            }
+        }
+    },
+    {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+            {
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                    name: '[name].[ext]',
+                    outputPath: 'static/',
+                    publicPath: 'static/'
+                }
+            }
+        ]
+    },
+];
 
 /*自动检测多入口多页面配置*/
 (()=>{

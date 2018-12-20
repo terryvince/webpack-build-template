@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const {entry, plugins, dist, src} = baseConfig;
+const {entry, plugins, dist, src, rules} = baseConfig;
 const path = require('path');
 
 const staticPath = {from:path.join(src, 'static/'), to: path.join(dist, 'static/')};
@@ -57,81 +57,7 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                include: /src/,
-                exclude: /node_modules|bower_components/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true
-                    }
-                },
-                'eslint-loader'
-                ]
-            },
-            {
-                test: /\.(ejs|html)$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            attrs: [':data-src', 'img:src'],
-                            minimize: false  //压缩html
-                        }
-                    },
-                    {
-                        loader: 'ejs-html-loader',
-                        options: {
-                            context: baseConfig,
-                            season: 1,
-                            episode: 9,
-                            production: true
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
-            },
-            {
-                test: /\.xml$/,
-                use: [
-                    'xml-loader'
-                ]
-            },
-            {
-                test: /\.(csv|tsv)$/,
-                use: [
-                    'csv-loader'
-                ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'static/font/',
-                        publicPath: 'static/font/'
-                    }
-                }
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: '[name].[ext]',
-                            outputPath: 'static/',
-                            publicPath: 'static/'
-                        }
-                    }
-                ]
-            },
+            ...rules,
             {
                 test: '/.css$/',
                 use: [
@@ -144,7 +70,7 @@ module.exports = {
                             publicPath: 'css/'
                         }
                     },
-                    'css-loader',
+                    'css-loader?sourceMap=true',
                     {loader: 'postcss-loader', options: {sourceMap: true}}
                 ]
             },
@@ -160,7 +86,7 @@ module.exports = {
                             publicPath: 'css/'
                         }
                     },
-                    'css-loader',
+                    'css-loader?sourceMap=true',
                     {loader: 'postcss-loader', options: {sourceMap: true}},
                     'sass-loader'
                 ]

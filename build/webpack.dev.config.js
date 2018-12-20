@@ -1,12 +1,13 @@
 const baseConfig = require('./base.config');
-const {entry, plugins, devServer, src, root} = baseConfig;
+const {entry, plugins, devServer, src, root, rules} = baseConfig;
 const HtmlWebpackReloadPlugin = require('html-webpack-reload-plugin');
+const {HotModuleReplacementPlugin} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
+const {VueLoaderPlugin} = require('vue-loader');
 const path = require('path');
 
-const staticPath = {from:path.join(src, 'static/'), to: path.join(root, '.temp/static/')};
+const staticPath = {from: path.join(src, 'static/'), to: path.join(root, '.temp/static/')};
 
 module.exports = {
     entry,
@@ -21,8 +22,9 @@ module.exports = {
             root: path.resolve(__dirname, '../'),
         }),
         new VueLoaderPlugin(),
-        new CopyWebpackPlugin([staticPath],{debug:'debug'}),
+        new CopyWebpackPlugin([staticPath], {debug: 'debug'}),
         ...plugins,
+        new HotModuleReplacementPlugin(),
         new HtmlWebpackReloadPlugin()
     ],
     // stats:'errors-only',
@@ -34,86 +36,13 @@ module.exports = {
     devServer,
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules|bower_components/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true
-                    }
-                },
-                'eslint-loader'
-                ]
-            },
-            {
-                test: /\.(ejs|html)$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            attrs: [':data-src', 'img:src'],
-                            minimize: false  //压缩html
-                        }
-                    },
-                    {
-                        loader: 'ejs-html-loader',
-                        options: {
-                            context: baseConfig,
-                            season: 1,
-                            episode: 9,
-                            production: false
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
-            },
-            {
-                test: /\.xml$/,
-                use: [
-                    'xml-loader'
-                ]
-            },
-            {
-                test: /\.(csv|tsv)$/,
-                use: [
-                    'csv-loader'
-                ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'static/font/',
-                        publicPath: 'static/font/'
-                    }
-                }
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: '[name].[ext]',
-                            outputPath: 'static/',
-                            publicPath: 'static/'
-                        }
-                    }
-                ]
-            },
+            ...rules,
             {
                 test: '/.css$/',
                 use: [
                     'style-loader',
                     'css-loader',
-                    'postcss-loader'
+                    {loader: 'postcss-loader', options: {sourceMap: true}},
                 ]
             },
             {
@@ -121,13 +50,13 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'postcss-loader',
+                    {loader: 'postcss-loader', options: {sourceMap: true}},
                     'sass-loader'
                 ]
             },
             {
                 test: /\.vue$/,
-                use:{
+                use: {
                     loader: 'vue-loader',
                     options: {
                         'scss': [
