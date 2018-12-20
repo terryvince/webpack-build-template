@@ -1,0 +1,146 @@
+/* === Cards === */
+.cards-list, .card .list-block {
+  ul {
+    background: none;
+  }
+  > ul {
+    @include removeThinLine(top);
+    @include removeThinLine(down);
+  }
+}
+.card {
+  background: #fff;
+  box-shadow: 0 .02rem .046rem rgba(0,0,0,0.3);
+  margin: 0.2331rem;
+  position: relative;
+  border-radius: 0.046rem;
+  font-size: 0.32rem;
+  .list-block, .content-block {
+    margin: 0;
+  }
+  .row:not(.no-gutter) .col > & {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.card-content {
+  position: relative;
+}
+.card-content-inner {
+  padding: 0.349rem;
+  position: relative;
+  > p:first-child {
+    margin-top: 0;
+  }
+  > p:last-child {
+    margin-bottom: 0;
+  }
+  > .list-block, >.content-block {
+    margin: -0.349rem;
+  }
+}
+.card-header, .card-footer {
+  min-height: 1.025rem;
+  position: relative;
+  padding: 0.233rem 0.349rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &[valign="top"] {
+    align-items: flex-start;
+  }
+  &[valign="bottom"] {
+    align-items: flex-end;
+  }
+  a.link {
+    line-height: 1.025rem;
+    height: 1.025rem;
+    text-decoration: none;
+    position: relative;
+    margin-top: -0.233rem;
+    margin-bottom: -0.233rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition-duration: 300ms;
+    html:not(.watch-active-state) &:active, &.active-state {
+      opacity: 0.3;
+      transition-duration: 0ms;
+    }
+    i+span, i+i, span+i, span+span {
+      margin-left: 0.163rem;
+    }
+    i.icon {
+      display: block;
+    }
+  }
+  a.icon-only {
+    min-width: 1.025rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+}
+.card-header {
+  border-radius: 0.046rem 0.046rem 0 0;
+  font-size: 0.396rem;
+  @include thinLine(down, #e1e1e1);
+  .card-cover {
+    width: 100%;
+    display: block;
+  }
+  &.no-border {
+    @include removeThinLine(down);
+  }
+  &.no-padding {
+    padding: 0;
+  }
+}
+.card-footer {
+  border-radius: 0 0 0.046rem 0.046rem;
+  color: $color-text-secondary;
+  @include thinLine(top, #e1e1e1);
+  &.no-border {
+    @include removeThinLine(top);
+  }
+
+}
+
+.facebook-card{
+  .card-header {
+    display: block;
+    padding: 0.233rem;
+  }
+  .facebook-avatar {
+    float: left;
+  }
+  .facebook-name {
+    margin-left: 1.025rem;
+    font-size: 0.32rem;
+    font-weight: 500;
+  }
+  .facebook-date {
+    margin-left: 1.025rem;
+    font-size: 0.303rem;
+    color: $color-text-secondary;
+  }
+  .card-footer {
+    background: #fafafa;
+  }
+  .card-footer{
+    a {
+      color: $color-text-secondary;
+      font-weight: 500;
+    }
+  }
+  .card-content {
+    img {
+      display: block;
+    }
+  }
+  .card-content-inner {
+    padding: 0.349rem 0.233rem;
+  }
+}
