@@ -1,5 +1,5 @@
 # webpack-build-template
-template of the front end，support vue，sass，eslint，babel，postcss，ejs，code splitting，sourceMapm, mutiple page development
+template of the front end，support vue，sass，eslint，babel，postcss，ejs，code splitting，sourceMap, mutiple page development
 
 ## install and start
 ```command
