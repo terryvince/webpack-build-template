@@ -22,10 +22,22 @@ let baseConfig = {
         port: 9000,
         progress: true,
         hot: true,
+        quiet: false,
         // hotOnly:true,
         // open:true,
         historyApiFallback: true,
-        stats: { colors: true, errors:true, errorDetails:true, modules:false, entrypoints:false }
+        stats: { colors: true, errors:true, errorDetails:true, modules:false, entrypoints:false },
+        watchContentBase: true,
+        proxy: {
+            '/api': {
+                target: 'https://www.hzz.com',
+                // 因为使用的是https，会有安全校验，所以设置secure为false
+                secure: false,
+                // port: 80,
+                // changeOrigin是关键，如果不加这个就无法跳转请求
+                changeOrigin: true,
+            }
+        }
     },
     title:{
         test:'template test'
@@ -138,7 +150,7 @@ baseConfig.rules = [
             // hash: true, // 为静态资源生成hash值
             // minify: true,
             // xhtml: true,
-            inject: injectMode //使用vue时需要等待文档加载完毕再引入，body后引入,如果html内联有script标签要注意顺序，最好放在body之后html之前
+            inject: injectMode //使用vue时需要等待文档加载完毕再引入，body后引入
         });
         baseConfig.plugins.push(htmlWebpack);
     });
