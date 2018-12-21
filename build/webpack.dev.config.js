@@ -42,7 +42,7 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    {loader: 'postcss-loader', options: {sourceMap: true}},
+                    'postcss-loader'
                 ]
             },
             {
@@ -50,8 +50,8 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    {loader: 'postcss-loader', options: {sourceMap: true}},
-                    'sass-loader'
+                    'postcss-loader',
+                    'fast-sass-loader'
                 ]
             },
             {

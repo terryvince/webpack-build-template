@@ -9,13 +9,5 @@ window.jQuery = $;
 
 $(function () {
     // title
-    $('title').html('webpack-build-tool');
-    // let a = [1,2,3];
-    // console.log(...a);
-    // let b = undefined;
-    // b.forEach(v=>{
-    //     console.log(v);
-    // });
-    console.log('2114445sdfsdfsdf');
-
+    $('title').html('webpack-build-template');
 });

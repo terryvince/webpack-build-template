@@ -10,7 +10,7 @@ let baseConfig = {
     src,
     dist: resolve(__dirname, '../dist'),
     app:'template of mutiple page',
-    lang: 'zhCN',
+    lang: 'zh_CN',
     entry: {main: resolve(src,'main.js')},
     plugins: [],
     isProd: process.env.NODE_ENV === 'production',
