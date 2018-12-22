@@ -9,8 +9,8 @@ class ParserQuery {
     // get query object
     get (url) {
         let query = {};
-        if (url.test(/[?]/)) {
-            let search = url.match(/([?][\w,=,.,&,$,+,-,:,/,?,%]*)(?=[#])*/g)[0];
+        if (/[?]/.test(url)) {
+            let search = url.match(/([?][^#]*)(?=[#])*/g)[0];
             search = search.endsWith('/') ? search.slice(0, -1) : search;
             let arr = search.substring(1).split('&');
             arr.forEach((v) => {
@@ -23,7 +23,7 @@ class ParserQuery {
     }
     // reset search string
     reset (url, ob) {
-        if (url.test(/[?]/)) {
+        if (/[?]/.test(url)) {
             let index = url.indexOf('?');
             url = url.slice(0, index);
         }
@@ -36,7 +36,7 @@ class ParserQuery {
     // set one of search string
     set (url, ob) {
         let oldQuery = this.get(url);
-        Object.assign(ob, oldQuery);
+        ob = Object.assign({}, oldQuery, ob);
         return this.reset(url, ob);
     }
 }
