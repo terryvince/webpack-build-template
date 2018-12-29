@@ -112,7 +112,7 @@ baseConfig.rules = [
             {
                 loader: 'url-loader',
                 options: {
-                    limit: 8192,
+                    limit: 1024*8,
                     name: '[name].[ext]',
                     outputPath: 'static/',
                     publicPath: 'static/'

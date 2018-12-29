@@ -66,7 +66,7 @@
     </div>
     <p class="content-margin"><a id="alert" class="btn btn-fill disabled">弹出确认框</a></p>
     <p class="content-margin"><a id="tooltip" class="btn btn-fill btn-danger">弹出提示</a></p>
-    <p class="content-margin"><a class="btn btn-big btn-fill btn-success">测试</a></p>
+    <p class="content-margin"><a id="loading" class="btn btn-big btn-fill btn-success">弹出加载中</a></p>
     <p class="content-margin"><a class="btn btn-fill btn-warning btn-mid-height">测试</a></p>
     <p class="content-margin"><a class="btn btn-fill btn-primary">测试</a></p>
     <p class="content-margin"><a class="btn btn-fill btn-light">测试</a></p>
@@ -122,15 +122,24 @@
 <script type="text/javascript">
     var $alert = $('#alert');
     var $toast = $('#tooltip');
+    var $loading = $('#loading');
+    // 提示
     $toast.click(function () {
         $h.toast({text:'这是弹出提示自动消失', stayTime:1000});
     });
+    // 确定框
     $alert.click(function () {
         $h.alert({
             title: '标题',
             text:'<p>这是说明，可以是纯文本也可以是html字符串</p>'
         });
     });
+    // 加载提示
+    $loading.click(function () {
+        $h.loading.show('加载中');   //提示文字选填
+        setTimeout($h.loading.hide,2000);
+    });
+    // 日期时间选择器
     $('#dtBox').DateTimePicker({
         language:'zh-CN',
         mode:'date',
