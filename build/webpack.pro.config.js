@@ -3,8 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const {entry, plugins, dist, src, rules} = baseConfig;
 const path = require('path');
+const {entry, plugins, dist, src, rules} = baseConfig;
 
 const staticPath = {from:path.join(src, 'static/'), to: path.join(dist, 'static/')};
 

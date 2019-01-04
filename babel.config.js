@@ -15,6 +15,8 @@ module.exports = {
         'modules': 'commonjs',
         'targets': {
             'browsers': [
+                'last 2 version',
+                '> 1%',
                 'iOS >= 6',
                 'Android > 4.1',
                 'not ie <= 8'
