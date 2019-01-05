@@ -4,7 +4,6 @@ const src = resolve(__dirname, '../src');
 const root = resolve(__dirname, '../');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const htmlInjectionPlugin = require('html-script-injection-webpack-plugin');
-// const htmlInjectionPlugin = require('./html-script-injection');
 
 let base = {
     root,
@@ -41,7 +40,7 @@ let base = {
         }
     },
     title: {
-        test: 'template test'
+        test: '测试页面'
     }
 };
 
@@ -103,8 +102,7 @@ let baseConfig = {
                 loader: 'url-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'static/font/',
-                    publicPath: 'static/font/'
+                    outputPath: 'static/font/'
                 }
             }
         },
@@ -116,8 +114,7 @@ let baseConfig = {
                     options: {
                         limit: 1024 * 8,
                         name: '[name].[ext]',
-                        outputPath: 'static/',
-                        publicPath: 'static/'
+                        outputPath: 'static/'
                     }
                 }
             ]

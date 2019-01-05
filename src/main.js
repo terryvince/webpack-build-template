@@ -8,6 +8,5 @@ window.$ = $;
 window.jQuery = $;
 
 $(function () {
-    // title
-    $('title').html('webpack-build-template');
+    $('title').html('webpack build template');
 });

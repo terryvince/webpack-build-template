@@ -66,8 +66,7 @@ module.exports = {
                         options: {
                             // you can specify a publicPath here
                             // by default it use publicPath in webpackOptions.output
-                            outputPath: 'css/',
-                            publicPath: 'css/'
+                            publicPath: '../'
                         }
                     },
                     'css-loader?sourceMap=true',
@@ -82,8 +81,7 @@ module.exports = {
                         options: {
                             // you can specify a publicPath here
                             // by default it use publicPath in webpackOptions.output
-                            outputPath: 'css/',
-                            publicPath: 'css/'
+                            publicPath: '../'
                         }
                     },
                     'css-loader?sourceMap=true',
@@ -100,8 +98,7 @@ module.exports = {
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
-                                    outputPath: 'css/',
-                                    publicPath: 'css/'
+                                    publicPath: '../'
                                 }
                             },
                             'css-loader',
@@ -111,8 +108,7 @@ module.exports = {
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
-                                    outputPath: 'css/',
-                                    publicPath: 'css/'
+                                    publicPath: '../'
                                 }
                             },
                             'css-loader',
