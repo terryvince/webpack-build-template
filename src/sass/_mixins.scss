@@ -1,0 +1,132 @@
+// 切多角 ,角度调整后有锯齿
+@mixin cut-multi-corners($bg, $topLeft:0, $topRight:$topLeft, $bottomRight:$topLeft, $bottomLeft:$topRight) {
+  background: $bg;
+  background: linear-gradient(135deg, transparent $topLeft, $bg 0) top left,
+              linear-gradient(225deg, transparent $topRight, $bg 0) top right,
+              linear-gradient(-45deg, transparent $bottomRight, $bg 0) bottom right,
+              linear-gradient(45deg, transparent $bottomLeft, $bg 0) bottom left;
+  background-size: 51% 50%; //防止中线，将分成四部分，每部分对应各自的角
+  background-repeat: no-repeat; // 防止边线
+  }
+// 切单角, 角度调整后有锯齿 http://bennettfeely.com/clippy/ 可以先画好再复制clip-path，只使用webkit内核
+@mixin cut-simple-corners($bg, $deg, $topLeft, $topRight, $bottomRight, $bottomLeft) {
+  background: $bg;
+  @if $topLeft!=0{
+    background: linear-gradient(135deg+$deg, transparent $topLeft, $bg 0) top left;
+  }
+  @if $topRight!=0{
+    background: linear-gradient(225deg+$deg, transparent $topRight, $bg 0) top right;
+  }
+  @if $bottomRight!=0{
+    background: linear-gradient(-45deg+$deg, transparent $bottomRight, $bg 0) bottom right;
+  }
+  @if $bottomLeft!=0{
+    background: linear-gradient(45deg+$deg, transparent $bottomLeft, $bg 0) bottom left;
+  }
+  background-size: 100% 100%;//扩大切角范围
+  background-repeat: no-repeat;
+}
+
+// 按钮颜色激活切换
+@mixin button-variant($color, $color-active) {
+  border-color: $color;
+  color: $color;
+  &:active {
+    border-color: $color-active;
+    color: $color-active;
+  }
+  &.btn-fill {
+    color: white;
+    background-color: $color;
+    &:active {
+      background-color: $color-active;
+    }
+  }
+}
+
+// 1物理像素细线
+@mixin thinLine($position, $color){
+    @if $position == top or $position == left{
+      &:before {
+        content: '';
+        position: absolute;
+        background-color: $color;
+        display: block;
+        z-index: 15;
+        @if $position == top{
+          left: 0;
+          top: 0;
+          bottom: auto;
+          right: auto;
+          height: 1px;
+          width: 100%;
+          transform-origin: 50% 0%;
+        }
+        @if $position == left{
+          left: 0;
+          top: 0;
+          bottom: auto;
+          right: auto;
+          width: 1px;
+          height: 100%;
+          transform-origin: 0% 50%;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+          transform: scaleY(0.5);
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+
+  @if $position == down or $position == right{
+    &:before {
+      content: '';
+      position: absolute;
+      background-color: $color;
+      display: block;
+      z-index: 15;
+      @if $position == down{
+        left: 0;
+        bottom: 0;
+        right: auto;
+        top: auto;
+        height: 1px;
+        width: 100%;
+        transform-origin: 50% 100%;
+      }
+      @if $position == right{
+        right: 0;
+        top: 0;
+        left: auto;
+        bottom: auto;
+        width: 1px;
+        height: 100%;
+        transform-origin: 100% 50%;
+      }
+      @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        transform: scaleY(0.5);
+      }
+      @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        transform: scaleY(0.33);
+      }
+    }
+  }
+
+
+}
+
+// 移除细线
+@mixin removeThinLine($position){
+  @if $position==right and $position==down{
+    &:after {
+      display: none;
+    }
+  }
+  @else{
+    &:before {
+      display: none;
+    }
+  }
+}

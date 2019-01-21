@@ -1,0 +1,104 @@
+// flex
+// 主轴排列
+@mixin flexMainAlign($position){
+  display: flex;
+  align-items: center;
+  align-content: center;
+  @if $position==start{
+    justify-content: flex-start;
+  }
+  @if $position==end{
+    justify-content: flex-end;
+  }
+  @if $position==center{
+    justify-content: center;
+  }
+  @if $position==around{
+    justify-content: space-around;
+  }
+  @if $position==evenly{
+    justify-content: space-evenly;
+  }
+  @if $position==between{
+    justify-content: space-between;
+  }
+}
+
+// 交叉轴排列
+@mixin flexCrossAlign($position){
+  display: flex;
+  justify-content: center;
+  @if $position==start{
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+  @if $position==end{
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+  @if $position==center{
+    align-items:center;
+    align-content: center;
+  }
+  @if $position==between{
+    align-items:center;
+    align-content: space-between;
+  }
+  @if $position==around{
+    align-items:center;
+    align-content: space-around;
+  }
+  @if $position==evenly{
+    align-items:center;
+    align-content: space-evenly;
+  }
+}
+
+.flex-main-end{
+  @include flexMainAlign(end)
+}
+.flex-main-start{
+  @include flexMainAlign(start)
+}
+.flex-main-around{
+  @include flexMainAlign(around)
+}
+.flex-main-evenly{
+  @include flexMainAlign(evenly)
+}
+.flex-main-center{
+  @include flexMainAlign(center)
+}
+.flex-main-between{
+  @include flexMainAlign(between)
+}
+.flex-cross-end{
+  @include flexCrossAlign(end)
+}
+.flex-cross-between{
+  @include flexCrossAlign(between)
+}
+.flex-cross-start{
+  @include flexCrossAlign(start)
+}
+.flex-cross-center{
+  @include flexCrossAlign(center)
+}
+.flex-none{
+  flex: none;
+}
+.flex-auto{
+  flex: auto;
+}
+.flex-item-align-stretch{
+  align-self: stretch;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex {
+  display: flex;
+}
+.flex-column{
+  flex-direction: column;
+}

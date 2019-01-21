@@ -1,0 +1,66 @@
+.row{
+  box-sizing: border-box;
+  overflow: hidden;
+
+  *[class*='col-']:last-child{
+    margin-right: 0 !important;
+  }
+
+  .col-{
+    &1,&2,&3,&4,&5,&6,&7,&8,&9,&10,&11,&12,&13,&14,&15,&16,&17,&18,&19,&20,&21,&22,&23,&24{
+      min-height: 1px;
+      position: relative;
+      float: left;
+      box-sizing:border-box;
+      transition:all 0.3s ease-in;
+    }
+  }
+
+  .col-{
+    @for $i from 1 through 24{
+      &#{$i}{
+        width: (100% / 24) * $i;
+      }
+    }
+  }
+  .col-pull-{
+    @for $i from 1 through 24{
+      &#{$i}{
+        right: (100% / 24) * $i;
+      }
+    }
+    &0{
+      right: auto;
+    }
+  }
+  .col-push-{
+    @for $i from 1 through 24{
+      &#{$i}{
+        left: (100% / 24) * $i;
+      }
+    }
+    &0{
+      left: auto;
+    }
+  }
+  .col-offset-{
+    @for $i from 0 through 24{
+      &#{$i}{
+        margin-left: (100% / 24) * $i;
+      }
+    }
+  }
+
+}
+
+
+.width-1-{
+  @for $i from 1 through 5 {
+    &#{$i}{
+      width: (100% / $i)!important;
+    }
+  }
+}
+.width-2-3{
+  width: (100% / 3) * 2;
+}

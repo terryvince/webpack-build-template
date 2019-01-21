@@ -1,0 +1,114 @@
+.btn {
+  $btn-height : 0.54rem;
+  $btn-mid-height:0.75rem;
+  $btn-big-height : .94rem;
+  $btn-mini-height:.48rem;
+  border: 1px solid $color-primary;
+  color: $color-primary;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  border-radius: 0.1rem;
+  line-height: ($btn-height - 0.04rem);
+  box-sizing: border-box;
+  appearance: none;
+  background: none;
+  padding: 0 0.2rem;
+  margin: 0;
+  height: $btn-height;
+  white-space: nowrap;
+  position: relative;
+  text-overflow: ellipsis;
+  font-size: 0.28rem;
+  font-family: inherit;
+  cursor: pointer;
+  input[type="submit"] &, input[type="button"] & {
+    width: 100%;
+  }
+  &.not-radius{
+    border-radius: unset;
+  }
+  &:active {
+    color: $color-primary-active;
+    border-color: $color-primary-active;
+  }
+  &.btn-round {
+    border-radius: ($btn-height - 0.04rem);
+  }
+  &.active {
+    &, &:active {
+      color: $color-primary-active;
+      border-color: $color-primary-active;
+    }
+  }
+  &.btn-fill {
+    color:#fff;
+    background: $color-primary;
+    border: none;
+    line-height: $btn-height;
+    &.active, &:active {
+      background: $color-primary-active;
+    }
+    &.btn-big {
+      line-height: $btn-big-height;
+    }
+    &.btn-mini {
+      line-height: $btn-mini-height;
+    }
+    &.btn-mid-height {
+      line-height: $btn-mid-height;
+    }
+  }
+  .btn-link {
+    padding-top: 0.12rem;
+    padding-bottom: 0.12rem;
+    color: $color-primary;
+    background-color: transparent;
+    border: 0;
+  }
+  &.btn-big {
+    font-size: 0.36rem;
+    height: $btn-big-height;
+    line-height: ($btn-big-height - 0.04rem);
+  }
+  &.btn-mini {
+    font-size: 0.26rem;
+    height: $btn-mini-height;
+    line-height: ($btn-mini-height - 0.04rem);
+  }
+  &.btn-mid-height {
+    font-size: 0.36rem;
+    height: $btn-mid-height;
+    line-height: ($btn-mid-height - 0.04rem);
+  }
+  &.btn-light {
+    @include button-variant($color-text-gray-light, $color-primary-active);
+    color: $color-text-secondary;
+  }
+  &.btn-dark {
+    @include button-variant(#6e727b, $color-primary-active);
+    color: $color-text-secondary;
+  }
+  &.btn-success {
+    @include button-variant($color-success, $color-success-active);
+  }
+  &.btn-danger {
+    @include button-variant($color-danger, $color-danger-active);
+  }
+  &.btn-warning {
+    @include button-variant($color-warning, $color-warning-active);
+  }
+}
+
+.btn {
+  &,
+  &.btn-primary,
+  &.btn-success,
+  &.btn-danger,
+  &.btn-warning {
+    &.disabled {
+      @include button-variant(#c8c9cb, #c8c9cb);
+      cursor: not-allowed;
+    }
+  }
+}

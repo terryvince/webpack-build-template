@@ -1,0 +1,35 @@
+
+// animate
+.notify-scroll{
+  transform:translateZ(0) translateX(100%);
+  animation:notify-scroll 15s linear 1s infinite;
+  white-space: nowrap;
+}
+@keyframes notify-scroll {
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+
+// transition
+.slide-up{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate3d(0,100%,0);
+  transition: transform .5s;
+  &.active{
+    transform: translate3d(0,0,0);
+  }
+}
+.slide-down{
+  transform: translate3d(0,-100%,0);
+  transition: transform .5s;
+  &.active{
+    transform: translate3d(0,0,0);
+  }
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="<%= this.lang %>">
+<head>
+    <title><%=this.app %></title>
+    <%- include('template/head.html') %>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+<header class="bar bar-nav">
+    <a class="btn btn-link pull-left"><span class="icon icon-left"></span>&nbsp;&nbsp;返回</a>
+    <h1 class="title">标题</h1>
+</header>
+<footer class="bar bar-tab">
+    <a class="tab-item active" href="#">
+        <i class="icon icon-user"></i>
+        <span class="tab-label">标题1</span>
+    </a>
+    <a class="tab-item" href="#">
+        <i class="icon icon-home"></i>
+        <span class="tab-label">标题2</span>
+    </a>
+    <a class="tab-item" href="#">
+        <i class="icon icon-hourglass"></i>
+        <span class="tab-label">标题1</span>
+    </a>
+    <a class="tab-item" href="#">
+        <i class="icon icon-android"></i>
+        <span class="tab-label">标题1</span>
+    </a>
+</footer>
+<div class="content">
+    <div class="width-1-1 content-padding">
+        <% for (key in this.title){ %>
+        <a href="<%= key %>.html" class="fs-32">
+            <%= this.title[key] %>
+        </a>
+        <% } %>
+    </div>
+    <div class="content-block-title">按钮</div>
+    <p class="content-margin"><a id="alert" class="btn btn-fill disabled">弹出确认框</a></p>
+    <p class="content-margin"><a id="tooltip" class="btn btn-fill btn-danger" data-url="121">弹出提示</a></p>
+    <p class="content-margin"><a id="loading" class="btn btn-big btn-fill btn-success">弹出加载中</a></p>
+    <p class="content-margin"><a class="btn btn-fill btn-warning btn-mid-height">测试</a></p>
+    <p class="content-margin"><a class="btn btn-fill btn-primary btn-mini">测试</a></p>
+    <p class="content-margin"><a class="btn btn-fill btn-light">测试</a></p>
+    <p class="content-margin"><a class="btn btn-fill btn-dark">测试</a></p>
+    <!--<div class="row content-padding">-->
+    <!--<div class="col-2">1112</div>-->
+    <!--<div class="col-20">3333</div>-->
+    <!--<div class="col-2">333</div>-->
+    <!--</div>-->
+    <div class="content-block-title">文字颜色</div>
+    <div class="row txt-center content-padding bg-black">
+        <div class="col-4 color-danger">danger</div>
+        <div class="col-4 color-gray">gray</div>
+        <div class="col-4 color-primary">primary</div>
+        <div class="col-4 color-default">default</div>
+        <div class="col-4 color-warning">warning</div>
+        <div class="col-4 color-success">success</div>
+        <div class="col-4 color-white">white</div>
+    </div>
+
+    <div class="content-block-title">背景颜色</div>
+    <div class="row txt-center content-padding bg-black color-white">
+        <div class="col-4 bg-danger">danger</div>
+        <div class="col-4 bg-primary">primary</div>
+        <div class="col-4 bg-warning">warning</div>
+        <div class="col-4 bg-success">success</div>
+        <div class="col-4 bg-white color-default">white</div>
+    </div>
+
+    <div class="content-block-title">列表</div>
+    <div class="list">
+        <div class="list-item list-space-between list-down-line">
+            <span>列表两端对齐</span>
+            <i class="icon icon-right"></i>
+        </div>
+        <div class="list-item list-space-around list-down-line">
+            <span>两侧边距小</span>
+            <span>两侧边距小</span>
+            <span>两侧边距小</span>
+        </div>
+        <div class="list-item list-space-evenly list-down-line">
+            <span>每段等距</span>
+            <span>每段等距</span>
+            <span>每段等距</span>
+        </div>
+        <div class="list-item list-small list-down-line">
+            <span>小列表</span>
+            <span>小列表</span>
+        </div>
+        <div class="list-item list-down-line row">
+            <label class="col-5">列表表单</label>
+            <input type="text" class="fs-26 col-19" placeholder="输入姓名">
+        </div>
+        <div class="list-item row">
+            <div class="col-6">
+                <img style="max-width: 90%" class="width-full" src="assert/sport-170.png" alt="">
+            </div>
+            <div class="col-18 flex-item-align-stretch flex-cross-between flex-wrap">
+                <p class="width-full">图片列表 图片列表 图片列表 图片列表 图片列表 图片列表 图片列表</p>
+                <div class="flex-main-between width-full">
+                    <span class="color-danger">放羊的星星</span>
+                    <span class="color-gray">18:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-block-title">表单</div>
+    <form class="form">
+        <div class="form-item row">
+            <span class="col-5">姓名：</span>
+            <input class="col-20" type="text" placeholder="请输入姓名">
+        </div>
+        <div class="form-item row">
+            <span class="col-5">性别：</span>
+            <label class="form-radio">
+                <input name="sex" type="radio">
+                <i class="icon"></i>
+                男
+            </label>
+            <label class="form-radio col-offset-1">
+                <input name="sex" type="radio">
+                <i class="icon"></i>
+                女
+            </label>
+        </div>
+        <div class="form-item row">
+            <span class="col-5">身份：</span>
+            <select>
+                <option value="">请选择身份</option>
+                <option value="">学生</option>
+                <option value="">职员</option>
+            </select>
+        </div>
+        <div class="form-item row">
+            <span class="col-5">出生日期：</span>
+            <input class="text col-20" type="text" placeholder="年/月/日" data-field="date" readonly>
+        </div>
+        <div class="form-item row">
+            <span class="col-5">上传头像：</span>
+            <div class="col-20 flex-main-start">
+                <div class="form-file">
+                    <input type="file">
+                    <a class="btn btn-fill btn-primary">选择图片</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-item row">
+            <span class="col-5">幸运数字：</span>
+            <div class="col-20 flex-main-start">
+                <div class="form-number">
+                    <i class="number-prefix-minus"></i>
+                    <input type="number">
+                    <i class="number-suffix-plus"></i>
+                </div>
+            </div>
+        </div>
+        <div class="form-item row">
+            <span class="col-5 flex-item-align-stretch">描述：</span>
+            <textarea class="content-padding-beside col-20" rows="3" placeholder="请输入描述"></textarea>
+        </div>
+    </form>
+    <div class="content-block-title">卡片</div>
+    <div class="card">
+        <div class="card-header">卡头</div>
+        <div class="card-content">
+            <div class="card-content-inner">头和尾的卡片。卡头是用来显示一些额外的信息，或自定义操作卡标题和页脚。</div>
+        </div>
+        <div class="card-footer">卡脚</div>
+    </div>
+    <div class="content-block-title">风格卡片</div>
+    <div class="card demo-card-header-pic">
+        <div class="card-header color-white no-border no-padding">
+            <img class='card-cover' src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" alt="">
+        </div>
+        <div class="card-content">
+            <div class="card-content-inner">
+                <p class="color-gray">发表于 2015/01/15</p>
+                <p>此处是内容...</p>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="#" class="link">赞</a>
+            <a href="#" class="link">更多</a>
+        </div>
+    </div>
+    <div class="content-block-title">Facebook卡片</div>
+    <div class="card facebook-card">
+        <div class="card-header no-border">
+            <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
+            <div class="facebook-name">夜萧</div>
+            <div class="facebook-date">星期一 3:47pm</div>
+        </div>
+        <div class="card-content"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="100%"></div>
+        <div class="card-footer no-border">
+            <a href="#" class="link">赞</a>
+            <a href="#" class="link">评论</a>
+            <a href="#" class="link">分享</a>
+        </div>
+    </div>
+</div>
+<!--日期选择器弹层-->
+<div id="dtBox"></div>
+<script src="static/datetimepick.js"></script>
+<script src="static/i18n-zhcn.js"></script>
+<script type="text/javascript">
+    var $alert = $('#alert');
+    var $toast = $('#tooltip');
+    var $loading = $('#loading');
+    // 提示
+    $toast.click(function (e) {
+        console.log(e);
+        $h.toast({text:'这是弹出提示自动消失', stayTime:1000});
+    });
+    // 确定框
+    $alert.click(function () {
+        $h.alert({
+            title: '标题',
+            text:'<p>这是说明，可以是纯文本也可以是html字符串</p>'
+        });
+    });
+    // 加载提示
+    $loading.click(function () {
+        $h.loading.show('加载中');   //提示文字选填
+        setTimeout($h.loading.hide,2000);
+    });
+    // 日期时间选择器
+    $('#dtBox').DateTimePicker({
+        language:'zh-CN',
+        mode:'date',
+        dateFormat:'yyyy-MM-dd'
+    });
+
+
+</script>
+<!--script-->
+<!--script end-->
+</body>
+</html>

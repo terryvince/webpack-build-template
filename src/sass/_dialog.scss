@@ -1,0 +1,67 @@
+.dialog-modal{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10600;
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: 400ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.visible{
+    visibility: visible;
+    opacity:1;
+  }
+  .dialog{
+    width: 6.293rem;
+    z-index: 11000;
+    text-align: left;
+    border-radius: 0.163rem;
+    color: #3d4145;
+    .dialog-inner{
+      padding: 0.349rem;
+      border-radius: 0.163rem 0.163rem 0 0;
+      position: relative;
+      background: #e8e8e8;
+      @include thinLine(down, #b5b5b5);
+      .dialog-title{
+        font-weight: 500;
+        font-size: 0.419rem;
+        text-align: center;
+      }
+      .dialog-title + .modal-text {
+        margin-top: 0.116rem;
+      }
+    }
+    .dialog-buttons{
+      height: 1.025rem;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      .dialog-button{
+        width: 100%;
+        padding: 0 0.116rem;
+        height: 1.025rem;
+        font-weight: 500;
+        border-radius: 0 0 0.163rem 0.163rem;
+        font-size: 0.396rem;
+        line-height: 1.025rem;
+        text-align: center;
+        color: #0894ec;
+        background: #e8e8e8;
+        display: block;
+        position: relative;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        cursor: pointer;
+        box-sizing: border-box;
+        flex: 1;
+      }
+    }
+  }
+}
