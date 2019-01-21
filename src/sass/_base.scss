@@ -1,9 +1,8 @@
 html {
   font-size: $rootFontSize;
-  color: #333;
+  color: #212529;
   font-family: $font-family-default;
   box-sizing: border-box;
-  background: white;
 }
 @media screen and (min-width: 750px){
   html{

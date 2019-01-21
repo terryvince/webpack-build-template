@@ -4,10 +4,10 @@
 .list{
   width: 100%;
   background: white;
-  color: #555;
+  //color: #555;
   font-size: .28rem;
   a.list-item{
-    color: #555;
+    color: $color-text;
   }
   .list-item{
     width: 100%;
