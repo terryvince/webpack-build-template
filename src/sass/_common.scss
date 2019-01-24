@@ -213,3 +213,26 @@
 .z-index-99 {
   z-index: 99;
 }
+// 水平滚动，隐藏滚动条
+.horizantal-scroll{
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 500;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  -ms-scroll-chaining: chained;
+  -ms-overflow-style: none;
+  -ms-content-zooming: zoom;
+  -ms-scroll-rails: none;
+  -ms-content-zoom-limit-min: 100%;
+  -ms-content-zoom-limit-max: 500%;
+  -ms-scroll-snap-type: proximity;
+  -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    display:none
+  }
+}

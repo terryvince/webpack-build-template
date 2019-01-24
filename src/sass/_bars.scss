@@ -103,7 +103,6 @@
   height: $bar-tab-height;
   padding: 0;
   table-layout: fixed;
-  display: table;
   @include thinLine(top, $border-default-color);
   @include removeThinLine(down);
 

@@ -3,48 +3,48 @@
   width: 100%;
   background: white;
   font-size: .28rem;
-  .form-item{
-    width: 100%;
-    padding: $bar-side-spacing $bar-side-spacing;
-    @include flexMainAlign(start);
-    @include thinLine(down, #d7d5d8);
-    position: relative;
-    &.form-item-small{
-      padding-top: .15rem;
-      padding-bottom: .15rem;
-    }
-    &.form-item-not-beside{
-      padding: $bar-side-spacing 0;
-    }
-    &.form-item-not-updown{
-      padding: 0 $bar-side-spacing;
-    }
-    &.form-item-not-line{
-      @include removeThinLine(down);
-    }
+}
 
-    input,textarea{
-      background: transparent;
-      border:none;
-    }
-    input.text{
-      height: .5rem;
-      width: 1.9rem;
-      border: 1px solid #c9c9c9;
-      padding:0 .1rem;
-    }
-    textarea{
-      font-family: $font-family-default;
-      resize: none;
-    }
-    select{
-      min-width: 2rem;
-      min-height: .5rem;
-      background: white;
-      border-radius: .1rem;
-      border: 1px solid #c9c9c9;
-      padding: .1rem .3rem .15rem .1rem;
-    }
+.form-item{
+  width: 100%;
+  padding: $bar-side-spacing $bar-side-spacing;
+  position: relative;
+  @include flexMainAlign(start);
+  &.form-item-small{
+    padding-top: .15rem;
+    padding-bottom: .15rem;
+  }
+  &.form-item-not-beside{
+    padding: $bar-side-spacing 0;
+  }
+  &.form-item-not-updown{
+    padding: 0 $bar-side-spacing;
+  }
+  &.form-item-line{
+    @include thinLine(down, #d7d5d8);
+  }
+
+  input,textarea{
+    background: transparent;
+    border:none;
+  }
+  input.text{
+    height: .58rem;
+    width: 2rem;
+    border: 1px solid #c9c9c9;
+    padding:0 .1rem;
+  }
+  textarea{
+    font-family: $font-family-default;
+    resize: none;
+  }
+  select{
+    min-width: 2rem;
+    height: .58rem;
+    background: white;
+    border-radius: .1rem;
+    border: 1px solid #c9c9c9;
+    padding: 0 .3rem 0 .1rem;
   }
 }
 

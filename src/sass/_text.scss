@@ -1,9 +1,14 @@
-.color-default {
+.color-text {
   color: #{$color-text}!important;
 }
-
+.color-text-secondary{
+  color:#{$color-text-secondary}!important;
+}
 .color-gray {
-  color: #999!important;
+  color: #{$color-text-gray}!important;
+}
+.color-gray-light{
+  color: #{$color-text-gray-light}!important;
 }
 
 .color-white{

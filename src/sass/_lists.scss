@@ -38,22 +38,7 @@
       @include thinLine(down, #d7d5d8);
     }
     input,textarea{
-      background: transparent;
-      border:none;
-    }
-    input.text{
-      height: .5rem;
-      width: 1.9rem;
-      border: 1px solid #c9c9c9;
-      padding:0 .1rem;
-    }
-    textarea{
-      font-family: $font-family-default;
-      resize: none;
-    }
-    select{
-      border-radius: .1rem;
-      padding: .08rem .1rem .15rem;
+      border: none;
     }
   }
 }

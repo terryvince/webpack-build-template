@@ -48,7 +48,7 @@ class UICompnent {
         let selector = 'alert' + id;
         $('body').append(`
       <div class="dialog-modal" id="${selector}">
-      <div class="dialog">
+      <div class="dialog zoomOut">
         <div class="dialog-inner">
           <div class="dialog-title">
             ${config.title}
@@ -64,12 +64,15 @@ class UICompnent {
     </div>
     `);
         let $dialog = $('#' + selector);
+        let $dialogBody = $dialog.find('.dialog');
         let $dialogBtn = $dialog.find('.dialog-button');
-        setTimeout(() => {
-            this.modalShow($dialog);
-        }, 0);
+        this.modalShow($dialog);
+        $dialogBody.addClass('animate-zoomOut');
         let me = this;
         $dialogBtn.click(function () {
+            console.log($dialogBody[0]);
+            $dialogBody.removeClass('animate-zoomOut');
+            $dialogBody.addClass('animate-zoomIn');
             me.modalHide($dialog);
             setTimeout(() => {
                 $dialog.remove();
@@ -119,14 +122,14 @@ function loadingProduct() {
                       <div class="dialog-modal visible" id="${selector}">
                         <div class="flex-cross-center loading-container flex-wrap">
                             <div class="loading-wrap">
-                                <span class="circle"></span>
-                                <span class="circle"></span>
-                                <span class="circle"></span>
-                                <span class="circle"></span>
-                                <span class="circle"></span>
-                                <span class="circle"></span>
-                                <span class="circle"></span>
-                                <span class="circle"></span>
+                                <span class="circle zoom-out-in"></span>
+                                <span class="circle zoom-out-in"></span>
+                                <span class="circle zoom-out-in"></span>
+                                <span class="circle zoom-out-in"></span>
+                                <span class="circle zoom-out-in"></span>
+                                <span class="circle zoom-out-in"></span>
+                                <span class="circle zoom-out-in"></span>
+                                <span class="circle zoom-out-in"></span>
                             </div>
                             <p class="color-white fs-24 loading-tip txt-center width-full">${tip}</p>
                         </div>
@@ -136,13 +139,17 @@ function loadingProduct() {
                 let $circle = $loading.find('.circle');
                 $circle.each(function (i) {
                     let angle = 360/$circle.length * (i+1);
-                    let point = calc(0.3,0.3,0.3,angle);
-                    this.style.left = (point[0]-0.05) + 'rem';
-                    this.style.top = (point[1]-0.05) + 'rem';
+                    let point = calc(0.4,0.4,0.4,angle);
+                    this.style.left = (point[0]-0.09).toFixed(3) + 'rem';
+                    this.style.top = (point[1]-0.09).toFixed(3) + 'rem';
                 });
             } else {
                 let $loading = $('#'+ selector);
                 let $loadingTip = $loading.find('.loading-tip');
+                let $circle = $loading.find('.circle');
+                if(!$circle.hasClass('zoom-out-in')){
+                    $circle.addClass('zoom-out-in');
+                }
                 if (!$loading.hasClass('visible')) {
                     $loadingTip.html(tip);
                     $loading.addClass('visible');
@@ -151,7 +158,9 @@ function loadingProduct() {
         },
         hide(){
             let $loading = $('#'+selector);
+            let $circle = $loading.find('.circle');
             $loading.removeClass('visible');
+            $circle.removeClass('zoom-out-in');
         }
     };
 }

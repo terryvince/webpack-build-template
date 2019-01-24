@@ -63,7 +63,7 @@
 .flex-main-around{
   @include flexMainAlign(around)
 }
-.flex-main-evenly{
+.flex-main-evenly{                    // 微信内置浏览器不支持，ie内核不支持
   @include flexMainAlign(evenly)
 }
 .flex-main-center{

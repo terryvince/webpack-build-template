@@ -48,7 +48,7 @@
 @mixin thinLine($position, $color){
     @if $position == top or $position == left{
       &:before {
-        content: '';
+        content: ' ';
         position: absolute;
         background-color: $color;
         display: block;
@@ -81,8 +81,8 @@
     }
 
   @if $position == down or $position == right{
-    &:before {
-      content: '';
+    &:after {
+      content: ' ';
       position: absolute;
       background-color: $color;
       display: block;

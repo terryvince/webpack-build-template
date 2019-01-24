@@ -29,6 +29,7 @@
         <span class="tab-label">标题1</span>
     </a>
 </footer>
+
 <div class="content">
     <div class="width-1-1 content-padding">
         <% for (key in this.title){ %>
@@ -37,7 +38,9 @@
         </a>
         <% } %>
     </div>
-
+    <div class="content-padding horizantal-scroll ">
+        <span class="width-full">水平滚动测试水平滚动测试水平滚动测试水平滚动测试水平滚动测试水平滚动测试</span>
+    </div>
     <div class="content-block-title">按钮</div>
     <p class="content-margin"><a id="alert" class="btn btn-fill disabled">弹出确认框</a></p>
     <p class="content-margin"><a id="tooltip" class="btn btn-fill btn-danger" data-url="121">弹出提示</a></p>
@@ -52,14 +55,16 @@
     <!--<div class="col-2">333</div>-->
     <!--</div>-->
     <div class="content-block-title">文字颜色</div>
-    <div class="row txt-center content-padding bg-black">
-        <div class="col-4 color-danger">danger</div>
-        <div class="col-4 color-gray">gray</div>
-        <div class="col-4 color-primary">primary</div>
-        <div class="col-4 color-default">default</div>
-        <div class="col-4 color-warning">warning</div>
-        <div class="col-4 color-success">success</div>
-        <div class="col-4 color-white">white</div>
+    <div class="row txt-center content-padding bg-white">
+        <div class="col-8 color-text">text</div>
+        <div class="col-8 color-text-secondary">text-secondary</div>
+        <div class="col-8 color-gray">gray</div>
+        <div class="col-8 color-gray-light">gray-light</div>
+        <div class="col-8 color-warning">warning</div>
+        <div class="col-8 color-success">success</div>
+        <div class="col-8 color-white bg-black">white</div>
+        <div class="col-8 color-danger">danger</div>
+        <div class="col-8 color-primary">primary</div>
     </div>
 
     <div class="content-block-title">背景颜色</div>
@@ -68,7 +73,7 @@
         <div class="col-4 bg-primary">primary</div>
         <div class="col-4 bg-warning">warning</div>
         <div class="col-4 bg-success">success</div>
-        <div class="col-4 bg-white color-default">white</div>
+        <div class="col-4 bg-white color-default color-text">white</div>
     </div>
 
     <div class="content-block-title">列表</div>
@@ -82,10 +87,11 @@
             <span>两侧边距小</span>
             <span>两侧边距小</span>
         </div>
-        <div class="list-item list-space-evenly list-down-line">
+        <div class="list-item list-space-evenly flex-wrap list-down-line">
             <span>每段等距</span>
             <span>每段等距</span>
             <span>每段等距</span>
+            <div class="width-full">微信内置浏览器不支持</div>
         </div>
         <div class="list-item list-small list-down-line">
             <span>小列表</span>
@@ -111,11 +117,11 @@
 
     <div class="content-block-title">表单</div>
     <form class="form">
-        <div class="form-item row">
+        <div class="form-item form-item-line row">
             <span class="col-5">姓名：</span>
             <input class="col-20" type="text" placeholder="请输入姓名">
         </div>
-        <div class="form-item row">
+        <div class="form-item form-item-line row">
             <span class="col-5">性别：</span>
             <label class="form-radio">
                 <input name="sex" type="radio">
@@ -128,19 +134,19 @@
                 女
             </label>
         </div>
-        <div class="form-item row">
+        <div class="form-item form-item-line row">
             <span class="col-5">身份：</span>
-            <select>
+            <select class="fs-28">
                 <option value="">请选择身份</option>
                 <option value="">学生</option>
                 <option value="">职员</option>
             </select>
         </div>
-        <div class="form-item row">
+        <div class="form-item form-item-line row">
             <span class="col-5">出生日期：</span>
             <input class="text col-20" type="text" placeholder="年/月/日" data-field="date" readonly>
         </div>
-        <div class="form-item row">
+        <div class="form-item form-item-line row">
             <span class="col-5">上传头像：</span>
             <div class="col-20 flex-main-start">
                 <div class="form-file">
@@ -149,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-item row">
+        <div class="form-item form-item-line row">
             <span class="col-5">幸运数字：</span>
             <div class="col-20 flex-main-start">
                 <div class="form-number">
@@ -240,7 +246,6 @@
     var $loading = $('#loading');
     // 提示
     $toast.click(function (e) {
-        console.log(e);
         $h.toast({text:'这是弹出提示自动消失', stayTime:1000});
     });
     // 确定框
@@ -252,7 +257,7 @@
     });
     // 加载提示
     $loading.click(function () {
-        $h.loading.show('加载中');   //提示文字选填
+        $h.loading.show('加载中...');   //提示文字选填
         setTimeout($h.loading.hide,2000);
     });
     // 日期时间选择器

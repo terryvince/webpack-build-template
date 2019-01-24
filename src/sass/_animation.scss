@@ -1,10 +1,37 @@
 
 // animate
+.animate-zoomOut{
+  animation: zoomOut .3s ease-out forwards;
+}
+
+.animate-zoomIn{
+  animation: zoomIn .3s ease-out forwards;
+}
+
+@keyframes zoomOut {
+  0%{
+    transform: scale3d(.3,.3,.3);
+  }
+  100%{
+    transform: scale3d(1,1,1);
+  }
+}
+
+@keyframes zoomIn {
+  0%{
+    transform: scale3d(1,1,1);
+  }
+  100%{
+    transform: scale3d(.3,.3,.3);
+  }
+}
+
 .notify-scroll{
   transform:translateZ(0) translateX(100%);
   animation:notify-scroll 15s linear 1s infinite;
   white-space: nowrap;
 }
+
 @keyframes notify-scroll {
   0%{
     transform: translateX(100%);
@@ -14,9 +41,8 @@
   }
 }
 
-
 // transition
-.slide-up{
+.transition-slide-up{
   position: absolute;
   bottom: 0;
   left: 0;
@@ -26,7 +52,7 @@
     transform: translate3d(0,0,0);
   }
 }
-.slide-down{
+.transition-slide-down{
   transform: translate3d(0,-100%,0);
   transition: transform .5s;
   &.active{
