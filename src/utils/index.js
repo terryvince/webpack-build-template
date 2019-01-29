@@ -6,5 +6,6 @@ import debounce from './debounce';
 import timeFormat from './timeFormat';
 import {guid, hashCode} from './encryption';
 import ParserQuery from './ParserQuery';
+import htmlEscape from './htmlEscape';
 
-export {$e, jc, guid, hashCode, _type, debounce, timeFormat, ParserQuery, LocalStore};
+export {$e, jc, guid, hashCode, _type, debounce, timeFormat, ParserQuery, LocalStore, htmlEscape};

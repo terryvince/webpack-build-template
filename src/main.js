@@ -9,5 +9,5 @@ window.$ = $;
 window.jQuery = $;
 // window.Swiper = Swiper;
 $(function () {
-    document.title = 'webpack build template';
+    document.title = 'hello world!';
 });

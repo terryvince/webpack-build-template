@@ -12,16 +12,7 @@ module.exports = {
         '@babel/plugin-syntax-import-meta'
     ],
     'presets': [['@babel/preset-env', {
-        'modules': 'commonjs',
-        'targets': {
-            'browsers': [
-                'last 2 version',
-                '> 1%',
-                'iOS >= 6',
-                'Android > 4.1',
-                'not ie <= 8'
-            ]
-        }
+        'modules': 'commonjs'
     }]
     ]
 };

@@ -7,7 +7,34 @@
     "start": "npm run dev",
     "dev": "set NODE_ENV=development&&webpack-dev-server --inline --config build/webpack.dev.config.js",
     "build": "set NODE_ENV=production&&webpack --config build/webpack.pro.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "electron_dev": "npm run build && electron .",
+    "electron_build": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.terryvince.www",
+    "copyright": "terryvince",
+    "productName": "HelloWorld",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "output": "./install",
+      "app": "./"
+    }
   },
   "author": "terryvince",
   "license": "ISC",
@@ -34,6 +61,8 @@
     "csv-loader": "^3.0.2",
     "ejs": "^2.6.1",
     "ejs-html-loader": "^3.1.0",
+    "electron": "^4.0.2",
+    "electron-builder": "^20.38.5",
     "eslint": "^5.10.0",
     "eslint-loader": "^2.1.1",
     "fast-sass-loader": "^1.4.7",
@@ -70,6 +99,7 @@
     "> 1%",
     "iOS >= 6",
     "Android > 4.1",
-    "not ie <= 8"
+    "not ie <= 8",
+    "Firefox > 20"
   ]
 }

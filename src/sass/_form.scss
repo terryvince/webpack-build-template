@@ -73,6 +73,7 @@
     border-radius: .44rem;
     border: 1px solid #c7c7cc;
     box-sizing: border-box;
+    transition: .3s background-color;
     &:after{
       content: '';
       position: absolute;
@@ -82,6 +83,7 @@
       margin-top: -0.08rem;
       width: 0.24rem;
       height: 0.18rem;
+      //transition: .3s background;
     }
   }
   input:checked + i{
@@ -98,6 +100,44 @@
   }
 }
 
+.form-switch{
+  display: inline-block;
+  @include flexMainAlign('start');
+  input[type='checkbox']{
+    display: none;
+    &:checked +.icon{
+      background: #4cd964;
+      border:.02rem solid #4cd964;
+      &:before{
+        //border: .01rem solid rgba(0,0,0,.3);
+        transform: translate3d(.52rem,0,0);
+      }
+    }
+  }
+  .icon{
+    width: 1.04rem;
+    height: .5rem;
+    border-radius: .32rem;
+    border:.02rem solid #e0e0e0;
+    position: relative;
+    transition: .3s background-color;
+    &:before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: .48rem;
+      width: .48rem;
+      border-radius: 50%;
+      border: .01rem solid rgba(0,0,0,.1);
+      box-shadow: -.02rem .02rem .03rem rgba(0,0,0,.2);
+      background: white;
+      transition: .3s transform;
+    }
+  }
+}
 
 // number input
 $signColor:#afafaf;

@@ -70,7 +70,6 @@ class UICompnent {
         $dialogBody.addClass('animate-zoomOut');
         let me = this;
         $dialogBtn.click(function () {
-            console.log($dialogBody[0]);
             $dialogBody.removeClass('animate-zoomOut');
             $dialogBody.addClass('animate-zoomIn');
             me.modalHide($dialog);

@@ -92,3 +92,5 @@ jspm_packages
 .tmp
 dist/
 www/
+
+install/

@@ -191,7 +191,6 @@ select{
 }
 
 body {
-  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -248,3 +247,8 @@ body {
 .bar-tab ~ .content {
   bottom: $bar-tab-height;
 }
+
+//// iphoneX 适配，全屏浏览，需先设置viewport-fit=cover
+//@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+//  html,body{height: 812px;background: $color-bg}
+//}
