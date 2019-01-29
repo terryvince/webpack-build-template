@@ -4,7 +4,7 @@ function notify(title,msg,icon) {
     msg = msg || '消息';
     icon = icon || 'http://bpic.588ku.com/element_origin_min_pic/02/14/03/28576b2358a672b.jpg';
     if (!('Notification' in window)) {
-        alert('This browser does not support desktop notification');
+        console.error('This browser does not support desktop notification');
     }
 
     // Let's check whether notification permissions have alredy been granted
@@ -20,7 +20,7 @@ function notify(title,msg,icon) {
             if (permission === 'granted') {
                 new Notification(title,{body:msg,icon:icon});
             } else {
-                alert('消息通知被拒绝');
+                console.warn('消息通知被拒绝');
             }
         });
     }

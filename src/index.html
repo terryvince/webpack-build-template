@@ -3,8 +3,6 @@
 <head>
     <title><%=this.app %></title>
     <%- include('template/head.html') %>
-    <style type="text/css">
-    </style>
 </head>
 <body>
 <header class="bar bar-nav">
@@ -41,6 +39,9 @@
     </div>
     <div class="content-padding horizantal-scroll ">
         <span class="width-full">水平滚动测试水平滚动测试水平滚动测试水平滚动测试水平滚动测试水平滚动测试</span>
+    </div>
+    <div class="flex-main-center content-padding">
+        加载图标：<div class="preloader"></div>&nbsp;白色：<div class="preloader preloader-white"></div>
     </div>
     <div class="content-block-title">按钮</div>
     <p class="content-margin"><a id="alert" class="btn btn-fill disabled">弹出确认框</a></p>
@@ -79,6 +80,7 @@
 
     <div class="content-block-title">列表</div>
     <div class="list">
+        <div class="width-full content-padding rel-position down-line">微信内置浏览器,ie不支持evenly,ie下after伪类即使绝对定位也会被当成子元素影响flex布局</div>
         <div class="list-item list-space-between list-down-line">
             <span>列表两端对齐</span>
             <i class="icon icon-right"></i>
@@ -92,7 +94,6 @@
             <span>每段等距</span>
             <span>每段等距</span>
             <span>每段等距</span>
-            <div class="width-full">微信内置浏览器不支持</div>
         </div>
         <div class="list-item list-small list-down-line">
             <span>小列表</span>

@@ -236,3 +236,6 @@
     display:none
   }
 }
+.down-line{
+  @include thinLine(down, #d7d5d8);
+}
