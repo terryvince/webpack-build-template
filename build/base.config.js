@@ -43,7 +43,7 @@ let base = {
         }
     },
     title: {
-        test: '测试页面'
+        app:'测试页面'
     }
 };
 
@@ -68,7 +68,7 @@ let baseConfig = {
                 {
                     loader: 'html-loader',
                     options: {
-                        attrs: [':data-src', 'img:src'],
+                        attrs: [':data-src', 'img:src', 'link:href'],
                         minimize: false  //压缩html
                     }
                 },
@@ -110,7 +110,7 @@ let baseConfig = {
             }
         },
         {
-            test: /\.(png|svg|jpg|gif)$/,
+            test: /\.(png|svg|jpg|gif|ico)$/,
             use: [
                 {
                     loader: 'url-loader',
