@@ -68,7 +68,7 @@ let baseConfig = {
                 {
                     loader: 'html-loader',
                     options: {
-                        attrs: [':data-src', 'img:src', 'link:href'],
+                        attrs: [':data-src', 'img:src'],
                         minimize: false  //压缩html
                     }
                 },
