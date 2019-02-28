@@ -4,19 +4,13 @@ const HtmlWebpackReloadPlugin = require('html-webpack-reload-plugin');
 const {HotModuleReplacementPlugin} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const {VueLoaderPlugin} = require('vue-loader');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
 
 const staticPath = {from: path.join(src, 'static/'), to: path.join(root, '.temp/static/')};
-
 module.exports = {
     entry,
     mode: 'development',
-    resolve: {
-        alias: {
-            'vue': 'vue/dist/vue.js'
-        }
-    },
     plugins: [
         new CleanWebpackPlugin(['.temp'], {
             root: path.resolve(__dirname, '../'),
@@ -33,6 +27,13 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, '../.temp')
     },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.resolve('../src')
+        }
+    },
     devServer,
     module: {
         rules: [
@@ -40,15 +41,23 @@ module.exports = {
             {
                 test: '/.css$/',
                 use: [
-                    'style-loader',
+                    'vue-style-loader',
                     'css-loader',
                     'postcss-loader'
                 ]
             },
             {
+                test: /\.styl(us)?$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    'stylus-loader'
+                ]
+            },
+            {
                 test: /\.(scss|sass)$/,
                 use: [
-                    'style-loader',
+                    'vue-style-loader',
                     'css-loader',
                     'postcss-loader',
                     'fast-sass-loader'
@@ -57,19 +66,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use: {
-                    loader: 'vue-loader',
-                    options: {
-                        'scss': [
-                            'vue-style-loader',
-                            'css-loader',
-                            'sass-loader'
-                        ],
-                        'sass': [
-                            'vue-style-loader',
-                            'css-loader',
-                            'sass-loader?indentedSyntax'
-                        ]
-                    }
+                    loader: 'vue-loader'
                 }
             }
         ]

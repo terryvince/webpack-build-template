@@ -8,7 +8,7 @@
 <body>
 <header class="bar bar-nav">
     <a class="btn btn-link pull-left"><span class="icon icon-left"></span>&nbsp;&nbsp;返回</a>
-    <h1 class="title">hello world!</h1>
+    <h1 class="title">hello world1!</h1>
 </header>
 <footer class="bar bar-tab">
     <a class="tab-item active" href="#">
@@ -30,6 +30,7 @@
 </footer>
 
 <div class="content">
+    <div id="app"></div>
     <div class="width-1-1 content-padding">
         <% for (key in this.title){ %>
         <a href="<%= key %>.html" class="fs-32">
@@ -244,6 +245,9 @@
             <a href="#" class="link">分享</a>
         </div>
     </div>
+    <input id="input" type="text">
+    <div id="view"></div>
+    <img src="assert/share-image.png" alt="">
 </div>
 <!--日期选择器弹层-->
 <div id="dtBox"></div>
@@ -253,9 +257,36 @@
     var $alert = $('#alert');
     var $toast = $('#tooltip');
     var $loading = $('#loading');
+
+
+    // 数据双向绑定
+    var $view = $('#view');
+    var $input = $('#input');
+    var data = {number:'123'};
+    var _data = {number:'123'};
+
+    $input.keyup(function () {
+        data.number = $input.val()
+    });
+
+    Object.defineProperty(data,'number',{
+        enumerable : true,
+        configurable : true,
+        set:function (n) {
+            _data.number = n;
+            $view.html(_data.number);
+        },
+        get:function () {
+            return _data.number;
+        }
+    });
+    console.log(data.number);
+
+
+
     // 提示
     $toast.click(function (e) {
-        $h.toast({text:'这是弹出提示自动消失', stayTime:1000});
+        $h.toast({text:'这是弹出提示自动消失', stayTime:1500});
     });
     // 确定框
     $alert.click(function () {

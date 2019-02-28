@@ -109,7 +109,7 @@
       background: #4cd964;
       border:.02rem solid #4cd964;
       &:before{
-        //border: .01rem solid rgba(0,0,0,.3);
+        border: none;
         transform: translate3d(.52rem,0,0);
       }
     }

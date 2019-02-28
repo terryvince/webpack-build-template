@@ -53,7 +53,10 @@ let baseConfig = {
         {
             test: /\.js$/,
             include: /src/,
-            exclude: /node_modules|bower_components/,
+            exclude: file => (
+                /node_modules/.test(file) &&
+                !/\.vue\.js/.test(file)
+            ),
             use: [{
                 loader: 'babel-loader',
                 options: {
@@ -127,7 +130,7 @@ let baseConfig = {
 
 /*自动检测多入口多页面配置*/
 (() => {
-    // 只src检测根目录
+    // 只检测src根目录
     let files = fs.readdirSync(src);
     let entrys = files.filter(fileName => extname(fileName) === '.js');
     let pages = files.filter(fileName => extname(fileName) === '.html');

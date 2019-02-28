@@ -12,8 +12,10 @@ module.exports = {
     entry,
     mode: 'production',
     resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
-            'vue': 'vue/dist/vue.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.resolve('../src')
         }
     },
     optimization: {
@@ -92,29 +94,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use:{
-                    loader: 'vue-loader',
-                    options: {
-                        'scss': [
-                            {
-                                loader: MiniCssExtractPlugin.loader,
-                                options: {
-                                    publicPath: '../'
-                                }
-                            },
-                            'css-loader',
-                            'sass-loader'
-                        ],
-                        'sass': [
-                            {
-                                loader: MiniCssExtractPlugin.loader,
-                                options: {
-                                    publicPath: '../'
-                                }
-                            },
-                            'css-loader',
-                            'sass-loader?indentedSyntax'
-                        ]
-                    }
+                    loader: 'vue-loader'
                 }
             }
         ]
