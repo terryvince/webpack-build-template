@@ -20,7 +20,7 @@
     };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .vu-hello{
     color: red;
 }

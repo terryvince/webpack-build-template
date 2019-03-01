@@ -1,6 +1,5 @@
 const baseConfig = require('./base.config');
 const {entry, plugins, devServer, src, root, rules} = baseConfig;
-const HtmlWebpackReloadPlugin = require('html-webpack-reload-plugin');
 const {HotModuleReplacementPlugin} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -18,8 +17,7 @@ module.exports = {
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([staticPath], {debug: 'debug'}),
         ...plugins,
-        new HotModuleReplacementPlugin(),
-        new HtmlWebpackReloadPlugin()
+        new HotModuleReplacementPlugin()
     ],
     // stats:'errors-only',
     devtool: 'inline-source-map',
@@ -28,7 +26,7 @@ module.exports = {
         path: path.resolve(__dirname, '../.temp')
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.vue', '.json', '.ts'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': path.resolve('../src')
@@ -39,10 +37,10 @@ module.exports = {
         rules: [
             ...rules,
             {
-                test: '/.css$/',
+                test: /\.css$/,
                 use: [
                     'vue-style-loader',
-                    'css-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1,import: true } },
                     'postcss-loader'
                 ]
             },
@@ -50,7 +48,7 @@ module.exports = {
                 test: /\.styl(us)?$/,
                 use: [
                     'vue-style-loader',
-                    'css-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
                     'stylus-loader'
                 ]
             },
@@ -58,7 +56,7 @@ module.exports = {
                 test: /\.(scss|sass)$/,
                 use: [
                     'vue-style-loader',
-                    'css-loader',
+                    { loader: 'css-loader', options: { importLoaders: 2 } },
                     'postcss-loader',
                     'fast-sass-loader'
                 ]

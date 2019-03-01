@@ -4,6 +4,7 @@ const src = resolve(__dirname, '../src');
 const root = resolve(__dirname, '../');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const htmlInjectionPlugin = require('html-script-injection-webpack-plugin');
+const HtmlWebpackReloadPlugin = require('html-webpack-reload-plugin');
 
 let base = {
     root,
@@ -66,6 +67,15 @@ let baseConfig = {
             ]
         },
         {
+            test: /\.ts$/,
+            loader: 'ts-loader',
+            options: { appendTsSuffixTo: [/\.vue$/] }
+        },
+        {
+            test: /\.pug$/,
+            loader: 'pug-plain-loader'
+        },
+        {
             test: /\.(ejs|html)$/,
             use: [
                 {
@@ -108,7 +118,7 @@ let baseConfig = {
                 loader: 'url-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'static/font/'
+                    outputPath: 'static/fonts/'
                 }
             }
         },
@@ -120,6 +130,7 @@ let baseConfig = {
                     options: {
                         limit: 1024 * 8,
                         name: '[name].[ext]',
+                        // name: '[name][hash].[ext]',
                         outputPath: 'static/'
                     }
                 }
@@ -160,7 +171,14 @@ let baseConfig = {
         baseConfig.plugins.push(htmlWebpack);
     });
     Object.assign(baseConfig.entry, entryOb);
-    baseConfig.isProd && baseConfig.plugins.push(new htmlInjectionPlugin({injectPoint: true}));
+    //是vue环境启用，或者其他环境的生产环境也启用自动注入脚本插件
+    if(isVue || baseConfig.isProd){
+        baseConfig.plugins.push(new htmlInjectionPlugin({injectPoint: true}));
+    }
+    // 不是vue环境并且是开发环境时启用html改动自动刷新插件。
+    if(!isVue && !baseConfig.isProd) {
+        baseConfig.plugins.push(new HtmlWebpackReloadPlugin());
+    }
 })();
 
 module.exports = baseConfig;

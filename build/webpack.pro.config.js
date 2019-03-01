@@ -21,21 +21,22 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',
-            minSize: 30000,
+            minSize: 30*1000,
             minChunks: 1,
             maxAsyncRequests: 5,
             maxInitialRequests: 3,
             automaticNameDelimiter: '~',
             name: true,
             cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
                 default: {
                     minChunks: 2,
                     priority: -20,
-                    reuseExistingChunk: true
+                    reuseExistingChunk: true,
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                    // maxSize:300*1000,
                 }
             }
         }
@@ -48,6 +49,7 @@ module.exports = {
         ...plugins,
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
+            // filename: 'css/[name].[hash].css',
             chunkFilename: '[id].css'
         }),
         new CopyWebpackPlugin([staticPath],{debug:'warning'})
@@ -55,13 +57,14 @@ module.exports = {
     devtool: 'source-map',
     output: {
         filename: 'js/[name].js',
+        // filename: 'js/[name].[hash].js',
         path: dist
     },
     module: {
         rules: [
             ...rules,
             {
-                test: '/.css$/',
+                test: /\.css$/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -71,7 +74,7 @@ module.exports = {
                             publicPath: '../'
                         }
                     },
-                    'css-loader?sourceMap=true',
+                    { loader: 'css-loader', options: { importLoaders: 1,import: true , sourceMap:true } },
                     {loader: 'postcss-loader', options: {sourceMap: true}}
                 ]
             },
@@ -86,7 +89,7 @@ module.exports = {
                             publicPath: '../'
                         }
                     },
-                    'css-loader?sourceMap=true',
+                    { loader: 'css-loader', options: { importLoaders: 2, sourceMap:true } },
                     {loader: 'postcss-loader', options: {sourceMap: true}},
                     'sass-loader'
                 ]
