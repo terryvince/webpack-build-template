@@ -58,7 +58,6 @@
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.0.0",
     "cssnano": "^4.1.7",
-    "csv-loader": "^3.0.2",
     "ejs": "^2.6.1",
     "ejs-html-loader": "^3.1.0",
     "electron": "^4.0.2",
@@ -76,25 +75,20 @@
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
-    "postcss-sprites": "^4.2.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "sugarss": "^2.0.0",
     "url-loader": "^1.1.2",
     "vue-loader": "^15.6.4",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.7",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14",
-    "xml-loader": "^1.2.1"
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "@babel/runtime": "^7.2.0",
     "jquery": "^3.3.1",
-    "stylus-loader": "^3.0.2",
-    "swiper": "^4.4.6",
     "vue": "^2.6.7"
   },
   "browserslist": [
