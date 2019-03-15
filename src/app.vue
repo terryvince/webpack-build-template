@@ -9,7 +9,7 @@
         name: 'app',
         data:function () {
             return {
-                data:'hello world!'
+                data:'hello world12132132321!'
             }
         },
         methods:{
