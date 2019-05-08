@@ -56,3 +56,11 @@
 .txt-break {
   word-wrap: break-word;
 }
+.txt-overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.txt-nowrap {
+  white-space: nowrap;
+}

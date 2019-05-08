@@ -42,8 +42,8 @@
 .relative{
   position: relative;
 }
-.txt-nowrap {
-  white-space: nowrap;
+.radius-circle{
+  border-radius: 50%;
 }
 .radius{
   border-radius: .1rem;
@@ -68,14 +68,48 @@
   bottom: 0;
   margin: auto;
 }
+.translate-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.translate-horizantal{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  white-space: nowrap;
+}
+.translate-vertical{
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  white-space: nowrap;
+}
+.inline-justify{
+  font-size: 1px;       //两端对齐，设置0 ie不支持,为了兼容ie，导致其他浏览器不能完全消除间距
+  text-align: justify;
+  text-align-last: justify;
+  &:after{          //兼容safari
+    content: '';
+    width: 100%;
+    display: inline-block;
+  }
+  .clear-justify{
+    text-align: left;
+    text-align-last: left;
+    display: inline-block;
+    &.txt-center{
+      text-align: center;
+      text-align-last: center;
+    }
+  }
+}
 .margin-center {
   margin: 0 auto;
 }
-.txt-overflow-ellipsis {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+
 .border-default {
   border: $border-default;
 }
@@ -182,6 +216,9 @@
 }
 .lh-1_5 {
   line-height: 1.5;
+}
+.lh-1_8{
+  line-height: 1.8;
 }
 .lh-2_ {
   line-height: 2;
