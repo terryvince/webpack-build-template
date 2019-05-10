@@ -11,6 +11,10 @@
     "electron_dev": "npm run build && electron .",
     "electron_build": "npm run build && electron-builder"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terryvince/webpack-build-template.git"
+  },
   "build": {
     "appId": "com.terryvince.www",
     "copyright": "terryvince",
@@ -72,7 +76,7 @@
     "html-webpack-reload-plugin": "^2.0.0",
     "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.9.2",
+    "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
     "sass-loader": "^7.1.0",
