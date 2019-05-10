@@ -7,14 +7,18 @@ module.exports = {
             },
         "extends": ["eslint:recommended"],
         "plugins": [],
-        "parser": "babel-eslint",
+        "parser": "@typescript-eslint/parser",
         "parserOptions": {
         "ecmaFeatures": {
             "jsx": true,
                 "experimentalObjectRestSpread": true
         },
         "ecmaVersion": 8,
-            "sourceType": "module"
+        "sourceType": "module",
+        "useJSXTextNode": true,
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./",
+        "extraFileExtensions": [".vue"]
     },
         "rules": {
         "no-console":0,

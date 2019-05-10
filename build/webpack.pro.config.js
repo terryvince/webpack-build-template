@@ -12,7 +12,7 @@ module.exports = {
     entry,
     mode: 'production',
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.vue', '.json', '.ts'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': path.resolve('../src')

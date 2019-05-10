@@ -1,27 +1,43 @@
 <template>
-    <div id="app">
-        <h1 @click="sayHello" class="vu-hello">{{data}}</h1>
+    <div>
+        <input v-model="msg">
+        <p>prop: {{propMessage}}</p>
+        <p>msg: {{msg}}</p>
+        <p>helloMsg: {{helloMsg}}</p>
+        <p>computed msg: {{computedMsg}}</p>
+        <button @click="greet">Greet</button>
     </div>
 </template>
-
+<!--仅使用装饰器版本，未使用ts,如需支持更多装饰器请使用vue-property-decorator-->
+<!--如果需要使用ts，添加lang=‘ts’即可使用-->
 <script>
-    export default {
-        name: 'app',
-        data:function () {
-            return {
-                data:'hello world121321323210!'
-            }
-        },
-        methods:{
-            sayHello(){
-                alert('sayHello!');
-            }
+    import Vue from 'vue'
+    import Component from 'vue-class-component'
+    @Component({
+        props: {
+            propMessage: String
         }
-    };
-</script>
+    })
+    export default class App extends Vue {
+        // initial data
+        msg = 123456;
 
-<style scoped lang="scss">
-.vu-hello{
-    color: red;
-}
-</style>
+        // use prop values for initial data
+        helloMsg = 'Hello, ' + this.propMessage;
+
+        // lifecycle hook
+        mounted () {
+            this.greet();
+        }
+
+        // computed
+        get computedMsg () {
+            return 'computed ' + this.msg;
+        }
+
+        // method
+        greet () {
+            alert('greeting: ' + this.msg);
+        }
+    }
+</script>
