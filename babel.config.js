@@ -13,6 +13,7 @@ module.exports = {
     ],
     'presets': [['@babel/preset-env', {
         'modules': 'commonjs'
-    }]
+    }],
+    // ['@vue/babel-preset-jsx']   //启用jsx语法
     ]
 };
