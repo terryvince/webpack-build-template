@@ -21,6 +21,11 @@ $(function () {
 
 
 //if you need vue ，use it
+const isProd = false;
+// cancel all warning
+vue.config.silent=isProd;
+// stop all of the vue production tip when start
+vue.config.productionTip=!isProd;
 const vue = new Vue({
     el: '#app',
     components: {App},
