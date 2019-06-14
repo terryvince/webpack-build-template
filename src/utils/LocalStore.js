@@ -43,6 +43,30 @@ class LocalStore {
         window[this.storeMethod][this.key] = JSON.stringify(this.store);
         return true;
     }
+    reset(ob){
+        if (!ob && _type(ob) !== 'object') {
+            console.error('LocalStore.set 参数不是一个object!');
+            return false;
+        }
+        this.store = ob;
+        window[this.storeMethod][this.key] = JSON.stringify(this.store);
+        return true;
+    }
+    remove(name){
+        if (_type(name) !== 'string') {
+            console.error('LocalStore.get 参数不是一个string!');
+            return false;
+        }
+        this.store = JSON.parse(window[this.storeMethod][this.key]);
+        delete this.store[name];
+        window[this.storeMethod][this.key] = JSON.stringify(this.store);
+        return true;
+    }
+    clear(){
+        this.store = {};
+        window[this.storeMethod][this.key] = JSON.stringify(this.store);
+        return true;
+    }
 }
 
 // console.log(new LocalStore({test: 'hello'}, 'local'))

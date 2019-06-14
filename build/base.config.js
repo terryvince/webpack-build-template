@@ -163,9 +163,9 @@ let baseConfig = {
         let htmlWebpack = new htmlWebpackPlugin({
             filename: filename,
             template: resolve(src, filename),
-            // hash: true, // 为静态资源生成hash值
+            hash: true, // 为静态资源生成hash值
             // minify: true,
-            // xhtml: true,
+            xhtml: true,
             inject: injectMode //使用vue时需要等待文档加载完毕再引入，body后引入
         });
         baseConfig.plugins.push(htmlWebpack);
