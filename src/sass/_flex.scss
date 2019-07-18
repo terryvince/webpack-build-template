@@ -93,6 +93,12 @@
 .flex-item-align-stretch{
   align-self: stretch;
 }
+.flex-item-align-start{
+  align-self: flex-start;
+}
+.flex-item-align-end{
+  align-self: flex-end;
+}
 .flex-wrap {
   flex-wrap: wrap;
 }

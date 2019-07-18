@@ -50,7 +50,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
             // filename: 'css/[name].[hash].css',
-            chunkFilename: 'css/[id].css'
+            chunkFilename: 'css/[name].css'
         }),
         new CopyWebpackPlugin([staticPath],{debug:'warning'})
     ],
