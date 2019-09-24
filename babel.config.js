@@ -1,6 +1,6 @@
 module.exports = {
     'plugins': [
-        ["@babel/plugin-transform-runtime", {"corejs": 3}],
+        ['@babel/plugin-transform-runtime', {'corejs': 3}],
         ['@babel/plugin-proposal-decorators',{legacy: true}],           //装饰器支持
         ['@babel/plugin-proposal-class-properties',{loose: true}],      //class支持
         '@babel/plugin-proposal-export-namespace-from',                 //支持export * as ns from 'mod';
