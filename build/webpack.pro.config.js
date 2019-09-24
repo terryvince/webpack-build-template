@@ -52,7 +52,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin([staticPath],{debug:'warning'})
     ],
-    devtool: 'source-map',
+    devtool: 'source-map',    //source-map 携带源码映射  none 不携带映射
     output: {
         filename: 'js/[name].js',
         // filename: 'js/[name].[hash].js',

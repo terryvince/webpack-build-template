@@ -18,7 +18,7 @@ module.exports = {
         new HotModuleReplacementPlugin()
     ],
     // stats:'errors-only',
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../.temp')
