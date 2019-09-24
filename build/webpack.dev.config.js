@@ -13,8 +13,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
-        new CopyWebpackPlugin([staticPath], {debug: 'debug'}),
         ...plugins,
+        new CopyWebpackPlugin([staticPath], {debug: 'debug'}),
         new HotModuleReplacementPlugin()
     ],
     // stats:'errors-only',

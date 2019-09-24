@@ -5,6 +5,8 @@ const root = resolve(__dirname, '../');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const htmlInjectionPlugin = require('html-script-injection-webpack-plugin');
 const HtmlWebpackReloadPlugin = require('html-webpack-reload-plugin');
+const  ProgressBarPlugin  = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
 let base = {
     root,
@@ -13,7 +15,13 @@ let base = {
     app: 'template of mutiple page',
     lang: 'zh_CN',
     entry: {main: resolve(src, 'main.js')},
-    plugins: [],
+    plugins: [
+        new ProgressBarPlugin({
+            format: chalk.yellow.bold('build  ') + chalk.cyan('[:bar]') + chalk.green.bold(':percent') + ' (' + chalk.magenta(':elapsed') + ' seconds) ',
+            clear: false,
+            width:100
+        }),
+    ],
     isProd: process.env.NODE_ENV === 'production',
     devServer: {
         // https:true,          //开起https服务器
@@ -22,7 +30,7 @@ let base = {
         compress: true,
         host: '0.0.0.0',
         port: 9000,
-        progress: true,
+        // progress: true,
         hot: true,
         quiet: false,
         // hotOnly:true,
