@@ -2,7 +2,7 @@ const baseConfig = require('./base.config');
 const {entry, plugins, devServer, src, root, rules} = baseConfig;
 const {HotModuleReplacementPlugin} = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
 
@@ -11,9 +11,7 @@ module.exports = {
     entry,
     mode: 'development',
     plugins: [
-        new CleanWebpackPlugin(['.temp'], {
-            root: path.resolve(__dirname, '../'),
-        }),
+        new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
         new CopyWebpackPlugin([staticPath], {debug: 'debug'}),
         ...plugins,

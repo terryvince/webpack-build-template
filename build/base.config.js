@@ -16,6 +16,7 @@ let base = {
     plugins: [],
     isProd: process.env.NODE_ENV === 'production',
     devServer: {
+        // https:true,          //开起https服务器
         clientLogLevel: 'warning',
         contentBase: join(__dirname, '../.temp'),
         compress: true,
@@ -145,7 +146,7 @@ let baseConfig = {
     let files = fs.readdirSync(src);
     let entrys = files.filter(fileName => extname(fileName) === '.js');
     let pages = files.filter(fileName => extname(fileName) === '.html');
-    let isVue = !!files.filter(fileName => extname(fileName) === '.vue')[0];
+    let isVue = files.findIndex(fileName => extname(fileName) === '.vue')>=0;   //单页开发环境
     let entryOb = {};
     entrys.forEach((filename) => {
         if (filename !== 'main.js') {
@@ -175,7 +176,7 @@ let baseConfig = {
     if(isVue || baseConfig.isProd){
         baseConfig.plugins.push(new htmlInjectionPlugin({injectPoint: true}));
     }
-    // 不是vue环境并且是开发环境时启用html改动自动刷新插件。
+    // 多页开发环境启用html改动自动刷新插件。
     if(!isVue && !baseConfig.isProd) {
         baseConfig.plugins.push(new HtmlWebpackReloadPlugin());
     }

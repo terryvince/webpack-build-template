@@ -1,7 +1,7 @@
 const baseConfig = require('./base.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const path = require('path');
 const {entry, plugins, dist, src, rules} = baseConfig;
@@ -42,9 +42,7 @@ module.exports = {
         }
     },
     plugins: [
-        new CleanWebpackPlugin(['dist'], {
-            root: path.resolve(__dirname, '../'),
-        }),
+        new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
         ...plugins,
         new MiniCssExtractPlugin({
@@ -74,8 +72,8 @@ module.exports = {
                             publicPath: '../'
                         }
                     },
-                    { loader: 'css-loader', options: { importLoaders: 1,import: true , sourceMap:true } },
-                    {loader: 'postcss-loader', options: {sourceMap: true}}
+                    { loader: 'css-loader', options: { importLoaders: 1,import: true } },
+                    {loader: 'postcss-loader'}
                 ]
             },
             {
@@ -89,8 +87,8 @@ module.exports = {
                             publicPath: '../'
                         }
                     },
-                    { loader: 'css-loader', options: { importLoaders: 2, sourceMap:true } },
-                    {loader: 'postcss-loader', options: {sourceMap: true}},
+                    { loader: 'css-loader', options: { importLoaders: 2 } },
+                    {loader: 'postcss-loader'},
                     'sass-loader'
                 ]
             },

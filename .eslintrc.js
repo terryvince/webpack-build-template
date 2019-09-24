@@ -5,13 +5,13 @@ module.exports = {
             "node": true,
             "es6": true
             },
-        "extends": ["eslint:recommended"],
-        "plugins": [],
+    "extends": ["eslint:recommended","plugin:vue/essential"],
+    "plugins": ["vue"],
+    // "parser": "@typescript-eslint/parser",
+    "parserOptions": {
         "parser": "@typescript-eslint/parser",
-        "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true,
-                "experimentalObjectRestSpread": true
+            "jsx": true
         },
         "ecmaVersion": 8,
         "sourceType": "module",
@@ -20,12 +20,12 @@ module.exports = {
         "tsconfigRootDir": "./",
         "extraFileExtensions": [".vue"]
     },
-        "rules": {
-        "no-console":0,
-            "indent": ["error", 4],
-            "linebreak-style": ["error", "windows"],
-            "quotes": ["error", "single"],
-            "semi": ["error", "always"],
-            "no-unused-vars": [1, {"vars": "all", "args": "after-used"}]
+    "rules": {
+    "no-console":0,
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "windows"],
+        "quotes": ["error", "single"],
+        // "semi": ["error", "always"],
+        "no-unused-vars": [1, {"vars": "all", "args": "after-used"}]
     }
 };
