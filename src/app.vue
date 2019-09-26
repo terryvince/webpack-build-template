@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input v-model="msg">
+        <input v-model="msg"/>
         <p>prop: {{propMessage}}</p>
         <p>msg: {{msg}}</p>
         <p>helloMsg: {{helloMsg}}</p>

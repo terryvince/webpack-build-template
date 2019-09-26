@@ -1,10 +1,8 @@
 import './main.scss';
 import $ from 'jquery';
 import $h from './UIComponent';
-// import Swiper from 'swiper/dist/js/swiper';
 import Vue from 'vue';
 import App from './app';
-import hello from './hello';
 
 
 window.$h = $h;
@@ -12,9 +10,10 @@ window.$ = $;
 window.jQuery = $;
 
 let user = { firstName: 'Jane', lastName: 'User' };
-console.log(hello(user));
-
-// window.Swiper = Swiper;
+//  动态加载模块
+import(/*webpackChunkName:"hello"*/'./hello').then(res=>{
+    console.log(res.default(user));
+});
 $(function () {
     document.title = 'hello world!';
 });

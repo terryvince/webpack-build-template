@@ -28,16 +28,20 @@ module.exports = {
             automaticNameDelimiter: '~',
             name: true,
             cacheGroups: {
+                // jquery:{
+                //     test: /jquery/,
+                //     priority: -5
+                // },//提取jquery为单独块
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                    // maxSize:300*1000,
+                },
                 default: {
                     minChunks: 2,
                     priority: -20,
                     reuseExistingChunk: true,
                 },
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                    // maxSize:300*1000,
-                }
             }
         }
     },
@@ -56,6 +60,8 @@ module.exports = {
     output: {
         filename: 'js/[name].js',
         // filename: 'js/[name].[hash].js',
+        chunkFilename: 'js/[name].js',
+        // publicPath: dist,
         path: dist
     },
     module: {
