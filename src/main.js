@@ -10,7 +10,7 @@ window.$ = $;
 window.jQuery = $;
 
 let user = { firstName: 'Jane', lastName: 'User' };
-//  动态加载模块
+//  动态加载模块 限制必须未被调用过才能分离包
 import(/*webpackChunkName:"hello"*/'./hello').then(res=>{
     console.log(res.default(user));
 });
@@ -43,7 +43,6 @@ Vue.config.silent=isProd;
 Vue.config.productionTip=!isProd;
 const vue = new Vue({
     el: '#app',
-    components: {App},
-    template: '<App/>'
+    render: h => h(App)
 });
 export default vue;
