@@ -3,7 +3,7 @@ const fs = require('fs');
 const src = resolve(__dirname, '../src');
 const root = resolve(__dirname, '../');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const htmlInjectionPlugin = require('html-script-injection-webpack-plugin');
+const htmlInjectionPlugin = require('html-script-injection-webpack-plugin');    //自己开发的插件，用于解决编译后内联脚本的顺序前置问题。
 const HtmlWebpackReloadPlugin = require('html-webpack-reload-plugin');
 const  ProgressBarPlugin  = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
@@ -78,6 +78,7 @@ let baseConfig = {
         {
             test: /\.ts$/,
             loader: 'ts-loader',
+            exclude: /node_modules/,
             options: { appendTsSuffixTo: [/\.vue$/] }
         },
         {
@@ -154,9 +155,9 @@ let baseConfig = {
     let files = fs.readdirSync(src);
     let entrys = files.filter(fileName => extname(fileName) === '.js');
     let pages = files.filter(fileName => extname(fileName) === '.html');
-    let isVue = files.findIndex(fileName => extname(fileName) === '.vue')>=0;   //单页开发环境
+    let isVue = files.findIndex(fileName => /.vue/.test(fileName));   //vue单页开发环境
     let entryOb = {};
-    entrys.forEach((filename) => {
+    !isVue && entrys.forEach((filename) => {    //多页环境添加入口
         if (filename !== 'main.js') {
             let name = basename(filename, '.js');
             entryOb[name] = resolve(src, filename);

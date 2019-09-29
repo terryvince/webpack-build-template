@@ -13,5 +13,10 @@ module.exports = {
     'presets': [
         ['@babel/preset-env', {'modules': 'commonjs'}],
     // ['@vue/babel-preset-jsx']   //启用jsx语法
-    ]
+    ],
+    'env': {
+        'test': {
+            'presets': [['@babel/preset-env', { 'targets': { 'node': 'current' } }]]  //面向当前的node版本，避免测试环境转译不必要的特性
+        }
+    },
 };
