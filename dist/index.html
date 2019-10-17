@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="<%= this.lang %>">
+<html lang="zh_CN">
 <head>
-    <title><%=this.title.app %></title>
-    <%- include('template/head.html') %>
+    <title>测试页面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=contain" />
+<!--<link rel="shortcut icon" type="image/ico" href="static/favicon.ico" />-->
+<!--viewprot-fit:contain iphoneX默认显示在安全区域内 viewport-fit=cover 填充整个屏幕-->
+
     <link rel="stylesheet" href="static/datetimepick.css">
-</head>
+<link href="css/main.css?616fd6c1b48f0419c01c" rel="stylesheet"/></head>
 <body>
 <header class="bar bar-nav">
     <a class="btn btn-link pull-left"><span class="icon icon-left"></span>&nbsp;&nbsp;返回</a>
@@ -34,11 +42,11 @@
     <div id="worker"></div>
     <div id="timer"></div>
     <div class="width-1-1 content-padding">
-        <% for (key in this.title){ %>
-        <a href="<%= key %>.html" class="fs-32">
-            <%= this.title[key] %>
+        
+        <a href="app.html" class="fs-32">
+            测试页面
         </a>
-        <% } %>
+        
     </div>
     <div class="content-padding horizantal-scroll ">
         <span class="width-full">水平滚动测试水平滚动测试水平滚动测试水平滚动测试水平滚动测试水平滚动测试</span>
@@ -252,9 +260,10 @@
 </div>
 <!--日期选择器弹层-->
 <div id="dtBox"></div>
-<script src="static/datetimepick.js"></script>
-<script src="static/i18n-zhcn.js"></script>
-<script type="text/javascript">
+
+
+
+<script type="text/javascript" src="js/vendors~main.js?616fd6c1b48f0419c01c"></script><script type="text/javascript" src="js/main.js?616fd6c1b48f0419c01c"></script><script src="static/datetimepick.js"></script><script src="static/i18n-zhcn.js"></script><script type="text/javascript">
     var $alert = $('#alert');
     var $toast = $('#tooltip');
     var $loading = $('#loading');
@@ -323,7 +332,5 @@
 
 
 </script>
-<!--script-->
-<!--script end-->
 </body>
 </html>

@@ -90,7 +90,7 @@ jspm_packages
 # Project
 ########################
 .tmp
-dist/
+#dist/
 www/
 
 install/
