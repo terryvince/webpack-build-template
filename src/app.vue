@@ -6,7 +6,6 @@
         <p>helloMsg: {{helloMsg}}</p>
         <p>computed msg: {{computedMsg}}</p>
         <button @click="greet">Greet</button>
-
     </div>
 </template>
 <!--仅使用组件装饰器版本，未使用ts,如需支持更多装饰器请使用vue-property-decorator-->
@@ -29,7 +28,7 @@ export default class App extends Vue {      //class只是语法糖，所以属�
 
     // lifecycle hook
     mounted () {
-        this.greet();
+        // this.greet();
     }
 
     // computed
