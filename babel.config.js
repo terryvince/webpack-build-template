@@ -8,7 +8,7 @@ module.exports = {
         '@babel/plugin-syntax-dynamic-import',                          //动态导入
         '@babel/plugin-proposal-throw-expressions',                     //支持throw表达式
         '@babel/plugin-syntax-import-meta',
-        '@babel/plugin-proposal-json-strings',
+        '@babel/plugin-proposal-json-strings'
     ],
     'presets': [
         ['@babel/preset-env', {'modules': 'commonjs'}],

@@ -17,10 +17,10 @@ let base = {
     entry: {main: resolve(src, 'main.js')},
     plugins: [
         new ProgressBarPlugin({
-            format: chalk.yellow.bold('build  ') + chalk.cyan('[:bar]') + chalk.green.bold(':percent') + ' (' + chalk.magenta(':elapsed') + ' seconds) ',
+            format: chalk.yellow.bold('Building： ') + chalk.cyan('[:bar]') + chalk.green.bold(':percent') + ' (' + chalk.magenta(':elapsed') + ' seconds) ',
             clear: false,
             width:100
-        }),
+        })
     ],
     isProd: process.env.NODE_ENV === 'production',
     devServer: {
@@ -32,7 +32,9 @@ let base = {
         port: 9000,
         // progress: true,
         hot: true,
-        quiet: false,
+        noInfo: true,        //仅错误被输出
+        // quiet: false,    //静默执行，忽略错误
+        inline:true,
         // hotOnly:true,
         // open:true,   //自动打开浏览器
         overlay:{
@@ -157,6 +159,12 @@ let baseConfig = {
     let pages = files.filter(fileName => extname(fileName) === '.html');
     let isVue = files.findIndex(fileName => /.vue/.test(fileName));   //vue单页开发环境
     let entryOb = {};
+    let injectMode = '';
+    if (isVue) {
+        injectMode = 'body';
+    } else {
+        injectMode = baseConfig.isProd ? 'body' : 'head';
+    }
     !isVue && entrys.forEach((filename) => {    //多页环境添加入口
         if (filename !== 'main.js') {
             let name = basename(filename, '.js');
@@ -164,26 +172,19 @@ let baseConfig = {
         }
     });
     pages.forEach((filename) => {
-        let injectMode;
-        if (isVue) {
-            injectMode = 'body';
-        } else {
-            injectMode = baseConfig.isProd ? 'body' : 'head';
-        }
-        let htmlWebpack = new htmlWebpackPlugin({
+        baseConfig.plugins.push(new htmlWebpackPlugin({
             filename: filename,
             template: resolve(src, filename),
             hash: true, // 为静态资源生成hash值
             // minify: true,
             xhtml: true,
             inject: injectMode //使用vue时需要等待文档加载完毕再引入，body后引入
-        });
-        baseConfig.plugins.push(htmlWebpack);
+        }));
     });
     Object.assign(baseConfig.entry, entryOb);
     //是vue环境启用，或者其他环境的生产环境也启用自动注入脚本插件
     if(isVue || baseConfig.isProd){
-        baseConfig.plugins.push(new htmlInjectionPlugin({injectPoint: true}));
+        baseConfig.plugins.push(new htmlInjectionPlugin({injectPoint: true}));  //这个插件可以确保h5页面中原有的script标签最后注入，如果不需要可以注释掉
     }
     // 多页开发环境启用html改动自动刷新插件。
     if(!isVue && !baseConfig.isProd) {

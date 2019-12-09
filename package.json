@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run dev",
-    "dev": "set NODE_ENV=development&&webpack-dev-server --inline --config build/webpack.dev.config.js",
-    "build": "set NODE_ENV=production&&webpack --config build/webpack.pro.config.js",
+    "dev": "set NODE_ENV=development && node build/index.js",
+    "build": "set NODE_ENV=production&& node build/index.js",
     "test": "jest",
     "electron_dev": "npm run build && electron .",
     "electron_build": "npm run build && electron-builder"
