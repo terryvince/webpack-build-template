@@ -44,6 +44,7 @@ export default class App extends Vue {      //class只是语法糖，所以属�
     // lifecycle hook
     mounted () {
         // this.greet();
+        console.log(11);
     }
 
     // computed

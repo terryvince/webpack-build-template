@@ -28,5 +28,5 @@ module.exports = {
         "quotes": ["error", "single"],
         // "semi": ["error", "always"],
         "no-unused-vars": [1, {"vars": "all", "args": "after-used"}]
-    }
+    },
 };
