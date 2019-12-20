@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "webpack build template",
   "main": "main.js",
+  "os": ["win32"],
   "scripts": {
     "start": "npm run dev",
     "dev": "set NODE_ENV=development&& node build/index.js",
