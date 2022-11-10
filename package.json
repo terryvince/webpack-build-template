@@ -71,7 +71,7 @@
     "cssnano": "^4.1.10",
     "ejs": "^2.7.1",
     "ejs-html-loader": "^4.0.1",
-    "electron": "^6.0.10",
+    "electron": "^18.3.7",
     "electron-builder": "^21.2.0",
     "eslint": "^5.16.0",
     "eslint-loader": "^3.0.2",
